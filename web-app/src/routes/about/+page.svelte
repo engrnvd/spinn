@@ -7,6 +7,7 @@
     import Divider from '../../attractions/divider/divider.svelte';
     import Card from '../../attractions/card/card.svelte';
     import Button from "../../attractions/button/Button.svelte"
+    import H1 from "../../attractions/typography/H1.svelte"
 
     let loading = false
 
@@ -18,7 +19,7 @@
 </script>
 
 <div class="content">
-    <h1>About this app</h1>
+    <H1>About this app</H1>
 
     <Button {loading} on:click={toggle}>
         click me

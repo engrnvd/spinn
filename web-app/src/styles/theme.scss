@@ -5,6 +5,59 @@
     --background: #{$background};
     --main-text: #{$main-text};
     --dark: #{$dark};
+    --font: #{$font};
+    --danger: #{$danger};
+    --disabled-bg: #{$disabled-bg};
+    --disabled: #{$disabled};
+    --info: #{$info};
+    --attention: #{$attention};
+    --success: #{$success};
+    --badge-default: #{$badge-default};
+    --light-contrast: #{$light-contrast};
+    --textfield-bg: #{$textfield-bg};
+    --textfield-bg-error: #{$textfield-bg-error};
+    --textfield-border: #{$textfield-border};
+    --textfield-item: #{$textfield-item};
+    --off-state: #{$off-state};
+    --chip-bg: #{$chip-bg};
+    --chip-fg: #{$chip-fg};
+    --snackbar-bg: #{$snackbar-bg};
+    --snackbar-fg: #{$snackbar-fg};
+    --modal-overlay-bg: #{$modal-overlay-bg};
+    --chip-radius: #{$chip-radius};
+    --button-radius: #{$button-radius};
+    --snackbar-radius: #{$snackbar-radius};
+    --dialog-radius: #{$dialog-radius};
+    --dropzone-radius: #{$dropzone-radius};
+    --card-radius: #{$card-radius};
+    --file-tile-radius: #{$file-tile-radius};
+    --textfield-outline-radius: #{$textfield-outline-radius};
+    --table-radius: #{$table-radius};
+
+    --snackbar-horizontal-offset: #{$snackbar-horizontal-offset};
+    --snackbar-vertical-offset: #{$snackbar-vertical-offset};
+
+    --slider-handle-size: #{$slider-handle-size};
+    --slider-handle-tooltip-size: #{$slider-handle-tooltip-size};
+    --slider-handle-tooltip-font-size: #{$slider-handle-tooltip-font-size};
+    --slider-handle-tooltip-disabled: #{$slider-handle-tooltip-disabled};
+    --slider-rail-size: #{$slider-rail-size};
+    --slider-rail-bg: #{$slider-rail-bg};
+    --slider-disabled: #{$slider-disabled};
+    --slider-tick-bg: #{$slider-tick-bg};
+    --slider-tick-length: #{$slider-tick-length};
+    --slider-sub-tick-length: #{$slider-sub-tick-length};
+    --slider-tick-value-color: #{$slider-tick-value-color};
+    --slider-tick-value-font-size: #{$slider-tick-value-font-size};
+
+    --bold-font-weight: #{$bold-font-weight};
+    --regular-font-weight: #{$regular-font-weight};
+    --thin-font-weight: #{$thin-font-weight};
+    --button-font-weight: #{$button-font-weight};
+
+    --shadow-0: #{$shadow-0};
+    --shadow-1: #{$shadow-1};
+    --shadow-raised: #{$shadow-raised};
 }
 
 [data-theme="dark"] {
