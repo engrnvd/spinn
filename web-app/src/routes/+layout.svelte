@@ -10,7 +10,7 @@
 </main>
 
 <footer>
-    <p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+    <p><a href="/about">About</a></p>
 </footer>
 
 <style>
@@ -30,16 +30,9 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 40px;
-    }
-
-    footer a {
-        font-weight: bold;
-    }
-
-    @media (min-width: 480px) {
-        footer {
-            padding: 40px 0;
-        }
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
     }
 </style>
