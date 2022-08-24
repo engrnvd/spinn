@@ -1,6 +1,14 @@
 @import "theme";
 @import "spacing";
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+p, div {
+    line-height: 1em;
+}
+
 body {
     background-color: var(--body-background);
     color: var(--dark);
