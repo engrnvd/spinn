@@ -25,14 +25,10 @@
         click me
     </Button>
 
-    <Divider/>
-
-    <Card>
+    <Card class="my-4">
         This is a <a href="https://kit.svelte.dev">SvelteKit</a> app. You can make your own by typing the
         following into your command line and following the prompts:
     </Card>
-
-    <Divider/>
 
     <Card>
         The <a href="/todos">TODOs</a> page illustrates SvelteKit's data loading and form handling. Try using

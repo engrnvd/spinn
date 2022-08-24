@@ -3,7 +3,7 @@
 
 :root {
     --main: #{$main};
-    --body-background: #{$background};
+    --body-background: #fafafe;
     --background: #{$background};
     --main-text: #{$main-text};
     --dark: #{$dark};
@@ -65,6 +65,6 @@
 [data-theme="dark"] {
     $dark-bg: #4d607c;
     --body-background: #{$dark-bg};
-    --background: #{color.adjust($dark-bg, $lightness: 3)};
+    --background: #{color.adjust($dark-bg, $lightness: 3%)};
     --dark: #{$background};
 }
