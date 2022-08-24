@@ -1,0 +1,13 @@
+@import 'src/attractions/_variables';
+
+:root {
+    --main: #{$main};
+    --background: #{$background};
+    --main-text: #{$main-text};
+    --dark: #{$dark};
+}
+
+[data-theme="dark"] {
+    --background: #4d607c;
+    --dark: #{$background};
+}
