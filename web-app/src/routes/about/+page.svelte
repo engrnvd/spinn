@@ -25,6 +25,21 @@
     <Button danger {loading} on:click={onClick}>
         click me
     </Button>
+    <Button {loading} on:click={onClick}>
+        click me
+    </Button>
+    <Button outline {loading} on:click={onClick}>
+        click me
+    </Button>
+    <Button filled danger {loading} on:click={onClick}>
+        click me
+    </Button>
+    <Button filled {loading} on:click={onClick}>
+        click me
+    </Button>
+    <Button filled {loading} on:click={onClick}>
+        click me
+    </Button>
     <p>
         <AccountIcon size="1.5em" color="green"/>
         dsfds

@@ -43,11 +43,11 @@
     &,
     &.outline {
         &:hover:not([disabled]) {
-            background: color.adjust($color, $alpha: -0.95);
+            background: color.adjust($color, $alpha: -0.85);
         }
 
         &:focus:not([disabled]) {
-            background: color.adjust($color, $alpha: -0.88);
+            background: color.adjust($color, $alpha: -0.78);
         }
     }
 }
