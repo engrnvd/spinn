@@ -1,10 +1,10 @@
 @use 'sass:color';
 
-@mixin color-text-icon-ripple($color) {
-    color: $color;
+@mixin color-text-icon-ripple($color, $name) {
+    color: var(--#{$name});
 
     .icon {
-        stroke: $color;
+        stroke: var(--#{$name});
     }
 
     .ripple {

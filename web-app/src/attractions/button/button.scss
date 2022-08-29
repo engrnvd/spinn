@@ -15,14 +15,14 @@
     padding: 0.8em 1.1em;
 
     :global {
-        @include mixins.color-text-icon-ripple(vars.$main);
+        @include mixins.color-text-icon-ripple(vars.$main, 'main');
     }
 
     &.danger {
         @include mixins.flat-interactive-background(vars.$danger);
 
         :global {
-            @include mixins.color-text-icon-ripple(vars.$danger);
+            @include mixins.color-text-icon-ripple(vars.$danger, 'danger');
         }
     }
 
@@ -30,7 +30,7 @@
         @include mixins.flat-interactive-background(vars.$dark);
 
         :global {
-            @include mixins.color-text-icon-ripple(vars.$dark);
+            @include mixins.color-text-icon-ripple(vars.$dark, 'dark');
         }
     }
 
@@ -53,7 +53,7 @@
         }
 
         :global {
-            @include mixins.color-text-icon-ripple(vars.$main-text);
+            @include mixins.color-text-icon-ripple(vars.$main-text, 'main-text');
         }
 
         &[disabled] {

@@ -13,17 +13,16 @@
 
     let loading = false
 
-    function toggle() {
-        const isDark = document.documentElement.getAttribute('data-theme') === 'dark'
-        const theme = isDark ? 'light' : 'dark'
-        document.documentElement.setAttribute('data-theme', theme)
+    function onClick() {
+        loading = true
+        setTimeout(() => loading = false, 2000)
     }
 </script>
 
 <div class="content">
     <H1>About this app</H1>
 
-    <Button {loading} on:click={toggle}>
+    <Button danger {loading} on:click={onClick}>
         click me
     </Button>
     <p>

@@ -64,6 +64,7 @@
 
 [data-theme="dark"] {
     --main: #{color.adjust($main, $lightness: 55%)};
+    --danger: #{color.adjust($danger, $lightness: 55%)};
     $dark-bg: #4d607c;
     --body-background: #{$dark-bg};
     --background: #{color.adjust($dark-bg, $lightness: 3%)};
