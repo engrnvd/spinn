@@ -16,7 +16,14 @@ body {
     font-family: var(--font);
 }
 
+a {
+    color: var(--main);
+    text-decoration: none;
 
+    &:hover {
+        filter: brightness(0.9);
+    }
+}
 
 
 
