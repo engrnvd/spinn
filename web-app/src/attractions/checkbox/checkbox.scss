@@ -58,8 +58,8 @@
   }
 
   :checked + .selector {
-    background-color: vars.$main;
-    border-color: vars.$main;
+    background-color: var(--main);
+    border-color: var(--main);
 
     &::before {
       border-bottom-width: 0.125em;

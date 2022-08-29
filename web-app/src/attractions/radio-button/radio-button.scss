@@ -51,8 +51,8 @@ input:disabled + .selector {
 }
 
 input:checked + .selector {
-  background-color: vars.$main;
-  border-color: vars.$main;
+  background-color: var(--main);
+  border-color: var(--main);
 
   &::before {
     background-color: vars.$main-text;

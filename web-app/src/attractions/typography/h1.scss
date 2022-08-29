@@ -1,7 +1,7 @@
 @use 'src/attractions/_variables' as vars;
 
 h1 {
-  color: vars.$main;
+  color: var(--main);
   font-size: 1.4em;
   font-weight: vars.$bold-font-weight;
   margin: 0 0 0.5em;

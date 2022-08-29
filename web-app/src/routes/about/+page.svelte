@@ -4,10 +4,12 @@
 </svelte:head>
 
 <script>
-    import Divider from '../../attractions/divider/divider.svelte';
     import Card from '../../attractions/card/card.svelte';
     import Button from "../../attractions/button/Button.svelte"
     import H1 from "../../attractions/typography/H1.svelte"
+    import AccountIcon from "../../mdi/AccountIcon.svelte"
+    import AbacusIcon from "../../mdi/AbacusIcon.svelte"
+    import AbTestingIcon from "../../mdi/AbTestingIcon.svelte"
 
     let loading = false
 
@@ -24,7 +26,16 @@
     <Button {loading} on:click={toggle}>
         click me
     </Button>
-
+    <p>
+        <AccountIcon size="1.5em" color="green"/>
+        dsfds
+    </p>
+    <div style="display: flex; align-items: center; gap: 0.5em">
+        <AccountIcon/>
+        <AbacusIcon/>
+        <AbTestingIcon/>
+        <div>AAAsdfds</div>
+    </div>
     <Card class="my-4">
         This is a <a href="https://kit.svelte.dev">SvelteKit</a> app. You can make your own by typing the
         following into your command line and following the prompts:

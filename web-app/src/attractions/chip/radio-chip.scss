@@ -51,12 +51,12 @@ input:focus + .chip {
 
 input:checked + .chip {
   background: color.adjust(vars.$main, $alpha: -0.88);
-  color: vars.$main;
+  color: var(--main);
 
   &.outline {
     background: color.adjust(vars.$main, $alpha: -0.94);
-    border-color: vars.$main;
-    color: vars.$main;
+    border-color: var(--main);
+    color: var(--main);
   }
 }
 

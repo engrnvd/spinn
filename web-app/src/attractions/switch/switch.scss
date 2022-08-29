@@ -46,10 +46,10 @@
   }
 
   input:checked ~ .track {
-    border-color: vars.$main;
+    border-color: var(--main);
 
     > .thumb {
-      background-color: vars.$main;
+      background-color: var(--main);
       transform: translateY(-50%) translateX(100%);
     }
   }

@@ -1,7 +1,7 @@
 @use 'src/attractions/_variables' as vars;
 
 .label {
-  color: vars.$main;
+  color: var(--main);
   font-size: 0.8em;
   font-weight: vars.$bold-font-weight;
   text-transform: uppercase;

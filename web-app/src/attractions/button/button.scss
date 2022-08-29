@@ -63,7 +63,7 @@
     }
 
     &.outline {
-        border: 1px solid vars.$main;
+        border: 1px solid var(--main);
 
         &.danger {
             border-color: vars.$danger;

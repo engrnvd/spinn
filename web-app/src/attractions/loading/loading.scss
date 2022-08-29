@@ -5,7 +5,7 @@ $dot-size: 0.4em;
 
 .spinner {
     align-items: center;
-    color: vars.$main;
+    color: var(--main);
     display: flex;
     justify-content: center;
     height: 1em;

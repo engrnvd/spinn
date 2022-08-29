@@ -1,7 +1,7 @@
 @use 'src/attractions/_variables' as vars;
 
 .headline {
-  color: vars.$main;
+  color: var(--main);
   font-size: 1.5em;
   font-weight: vars.$bold-font-weight;
   margin-bottom: 0.2em;

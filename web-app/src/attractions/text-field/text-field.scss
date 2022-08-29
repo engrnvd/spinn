@@ -81,11 +81,11 @@
     }
 
     > input:focus + :global .item {
-      color: vars.$main;
-      stroke: vars.$main;
+      color: var(--main);
+      stroke: var(--main);
 
       :global svg {
-        stroke: vars.$main;
+        stroke: var(--main);
       }
     }
 
@@ -143,7 +143,7 @@
       }
 
       > input:focus ~ :global .item {
-        color: vars.$main;
+        color: var(--main);
       }
     }
 
@@ -162,10 +162,10 @@
       }
 
       &:focus {
-        border-color: vars.$main;
+        border-color: var(--main);
 
         + label {
-          color: vars.$main;
+          color: var(--main);
         }
       }
 
@@ -187,7 +187,7 @@
     }
 
     input:focus ~ :global svg.item {
-      stroke: vars.$main;
+      stroke: var(--main);
     }
   }
 

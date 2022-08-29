@@ -1,7 +1,7 @@
 @use 'src/attractions/_variables' as vars;
 
 .dot {
-  background: vars.$main;
+  background: var(--main);
   border-radius: 50%;
   height: 0.625em;
   width: 0.625em;
