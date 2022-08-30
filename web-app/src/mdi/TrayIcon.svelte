@@ -1,8 +1,8 @@
 <script>
     import Icon from "../lib/Icon.svelte"
 
-    export let color
-    export let size
+    export let color = 'currentColor'
+    export let size = '1em'
 </script>
 
 <Icon path="M2 12H4V17H20V12H22V17A2 2 0 0 1 20 19H4A2 2 0 0 1 2 17Z" {size} {color}/>
