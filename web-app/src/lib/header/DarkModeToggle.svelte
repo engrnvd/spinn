@@ -1,11 +1,12 @@
 <script>
     import Button from "../../attractions/button/Button.svelte"
     import { Storage } from "../../helpers/storage-helper.js"
-    import { onMount } from "svelte"
     import WhiteBalanceSunnyIcon from "../../mdi/WhiteBalanceSunnyIcon.svelte"
     import MoonIcon from "../../mdi/MoonIcon.svelte"
+    import { browser } from "$app/env"
 
-    let isDark = false
+    // todo: get value from cookie instead of local storage
+    let isDark = browser ? Storage.get('dark-mode-active', false) : false
 
     function toggle() {
         isDark = document.documentElement.getAttribute('data-theme') !== 'dark'
@@ -15,13 +16,11 @@
 
     function updateUi() {
         const theme = isDark ? 'dark' : 'light'
-        document.documentElement.setAttribute('data-theme', theme)
+        if (browser) document.documentElement.setAttribute('data-theme', theme)
+        // todo: handle on server too
     }
 
-    onMount(() => {
-        isDark = Storage.get('dark-mode-active', false)
-        updateUi()
-    })
+    updateUi()
 </script>
 
 <Button round on:click={toggle}>
