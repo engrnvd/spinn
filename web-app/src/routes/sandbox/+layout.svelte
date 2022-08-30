@@ -1,4 +1,5 @@
 <script>
+    import Loading from "../../attractions/loading/Loading.svelte"
     import H1 from "../../attractions/typography/H1.svelte"
     import NavLink from "../../lib/Nav/NavLink.svelte"
     import Button from '../../attractions/button/button.svelte'
@@ -18,6 +19,12 @@
 
 <div class="content">
     <H1>SvelteKit Sandbox</H1>
+
+    {#if $navigating}
+        <p>
+            <Loading/>
+        </p>
+    {/if}
 
     <nav class="nav d-flex align-items-center justify-content-center my-5">
         <NavLink href="/sandbox/buttons">Buttons</NavLink>
