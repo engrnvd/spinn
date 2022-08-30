@@ -20,12 +20,6 @@
 <div class="content">
     <H1>SvelteKit Sandbox</H1>
 
-    {#if $navigating}
-        <p>
-            <Loading/>
-        </p>
-    {/if}
-
     <nav class="nav d-flex align-items-center justify-content-center my-5">
         <NavLink href="/sandbox/buttons">Buttons</NavLink>
         <NavLink href="/sandbox/icons">Icons</NavLink>
