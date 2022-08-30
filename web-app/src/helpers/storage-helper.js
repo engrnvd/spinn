@@ -1,6 +1,6 @@
 import { decrypt, encrypt } from "./encryption-helper.js";
 import { ENC_SALT } from "./constants.js"
-import { browser } from "$app/env"
+import { browser } from "$app/environment"
 
 export const Storage = {
     get(key, defaultValue = '') {

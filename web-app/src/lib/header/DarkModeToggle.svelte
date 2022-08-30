@@ -3,7 +3,7 @@
     import { Storage } from "../../helpers/storage-helper.js"
     import WhiteBalanceSunnyIcon from "../../mdi/WhiteBalanceSunnyIcon.svelte"
     import MoonIcon from "../../mdi/MoonIcon.svelte"
-    import { browser } from "$app/env"
+    import { browser } from "$app/environment"
 
     // todo: get value from cookie instead of local storage
     let isDark = browser ? Storage.get('dark-mode-active', false) : false
