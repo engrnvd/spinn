@@ -10,7 +10,7 @@
 </main>
 
 <footer>
-    <p><a href="/about">About</a></p>
+    <p><a href="/sandbox">Sandbox</a></p>
 </footer>
 
 <style>

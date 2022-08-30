@@ -2,8 +2,6 @@
     import { page } from '$app/stores'
 </script>
 
-<h1>
-    {$page.status}: Custom Error Page
-</h1>
+<h1 class="text-center">{$page.status}: {$page.error.message}</h1>
 
-<pre>{$page.error}</pre>
+
