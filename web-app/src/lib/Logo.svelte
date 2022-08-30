@@ -1,12 +1,12 @@
 <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle class="main-circle" cx="100" cy="100" r="100" fill="#3FB15E"/>
-    <circle cx="63" cy="60" r="30" fill="#D9D9D9"/>
-    <circle cx="159" cy="67" r="20" fill="#D9D9D9"/>
-    <circle cx="140" cy="150" r="20" fill="#D9D9D9"/>
-    <circle cx="60" cy="147" r="20" fill="#D9D9D9"/>
-    <rect x="61.343" y="66.399" width="10" height="106" transform="rotate(-41.1755 61.343 66.399)" fill="#D9D9D9"/>
-    <rect x="56" y="66.9937" width="10" height="106" transform="rotate(-87.9729 56 66.9937)" fill="#D9D9D9"/>
-    <rect x="56" y="53.3797" width="10" height="106" transform="rotate(-2.17598 56 53.3797)" fill="#D9D9D9"/>
+    <circle cx="67" cy="68" r="30" fill="white"/>
+    <circle cx="153" cy="65" r="20" fill="white"/>
+    <circle cx="142" cy="141" r="20" fill="white"/>
+    <circle cx="67" cy="148" r="20" fill="white"/>
+    <rect x="59" y="70.6033" width="15" height="106" transform="rotate(-44.9819 59 70.6033)" fill="white"/>
+    <rect x="50.5208" y="74.6713" width="15" height="106" transform="rotate(-91.9897 50.5208 74.6713)" fill="white"/>
+    <rect x="59.7612" y="50" width="15" height="106" transform="rotate(0.411428 59.7612 50)" fill="white"/>
 </svg>
 
 <style lang="scss">
