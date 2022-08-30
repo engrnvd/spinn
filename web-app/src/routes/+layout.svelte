@@ -1,6 +1,7 @@
 <script lang="ts">
   import Header from '$lib/header/Header.svelte'
   import '../styles/app.scss'
+  import NavLink from '../lib/Nav/NavLink.svelte'
 </script>
 
 <Header/>
@@ -10,7 +11,9 @@
 </main>
 
 <footer>
-    <p><a href="/sandbox">Sandbox</a></p>
+    <p>
+        <NavLink href="/sandbox">Sandbox</NavLink>
+    </p>
 </footer>
 
 <style>
