@@ -1,9 +1,9 @@
 <script>
-    import WeatherSunnyIcon from "../../mdi/WeatherSunnyIcon.svelte"
     import Button from "../../attractions/button/Button.svelte"
-    import WeatherNightIcon from "../../mdi/WeatherNightIcon.svelte"
     import { Storage } from "../../helpers/storage-helper.js"
     import { onMount } from "svelte"
+    import WhiteBalanceSunnyIcon from "../../mdi/WhiteBalanceSunnyIcon.svelte"
+    import MoonIcon from "../../mdi/MoonIcon.svelte"
 
     let isDark = false
 
@@ -26,8 +26,8 @@
 
 <Button round on:click={toggle}>
     {#if isDark}
-        <WeatherSunnyIcon/>
+        <WhiteBalanceSunnyIcon/>
     {:else}
-        <WeatherNightIcon/>
+        <MoonIcon/>
     {/if}
 </Button>
