@@ -22,6 +22,7 @@
     <nav class="nav d-flex align-items-center justify-content-center my-5">
         <NavLink href="/sandbox/buttons">Buttons</NavLink>
         <NavLink href="/sandbox/icons">Icons</NavLink>
+        <NavLink href="/sandbox/env">ENV</NavLink>
     </nav>
 
     <slot></slot>
