@@ -13,7 +13,4 @@
     })
 </script>
 
-<style lang="scss">
-</style>
-
 <ApmProgressBar bind:this={progress}/>
