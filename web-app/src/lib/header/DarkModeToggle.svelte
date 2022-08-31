@@ -22,8 +22,8 @@
 
 <Button round on:click={toggle} small>
     {#if theme === 'dark'}
-        <WhiteBalanceSunnyIcon size="20"/>
+        <WhiteBalanceSunnyIcon/>
     {:else if theme === 'light'}
-        <MoonIcon size="20"/>
+        <MoonIcon/>
     {/if}
 </Button>
