@@ -1,32 +1,29 @@
 <script>
     import Button from "../../attractions/button/Button.svelte"
-    import { Storage } from "../../helpers/storage-helper"
+    import { Cookie } from "../../helpers/cookie"
     import WhiteBalanceSunnyIcon from "../../mdi/WhiteBalanceSunnyIcon.svelte"
     import MoonIcon from "../../mdi/MoonIcon.svelte"
     import { browser } from "$app/environment"
 
-    // todo: get value from cookie instead of local storage
-    let isDark = browser ? Storage.get('dark-mode-active', false) : false
+    let theme = currentTheme()
+
+    function currentTheme() {
+        if (browser) return Cookie.get('appTheme')
+        return '' // todo: pass data from the server
+    }
 
     function toggle() {
-        isDark = document.documentElement.getAttribute('data-theme') !== 'dark'
-        updateUi()
-        Storage.set('dark-mode-active', isDark)
+        theme = currentTheme() === 'dark' ? 'light' : 'dark'
+        Cookie.set('appTheme', theme)
+        document.documentElement.setAttribute('data-theme', theme)
     }
 
-    function updateUi() {
-        const theme = isDark ? 'dark' : 'light'
-        if (browser) document.documentElement.setAttribute('data-theme', theme)
-        // todo: handle on server too
-    }
-
-    updateUi()
 </script>
 
 <Button round on:click={toggle}>
-    {#if isDark}
+    {#if theme === 'dark'}
         <WhiteBalanceSunnyIcon/>
-    {:else}
+    {:else if theme === 'light'}
         <MoonIcon/>
     {/if}
 </Button>

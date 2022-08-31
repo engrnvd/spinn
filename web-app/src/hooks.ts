@@ -5,7 +5,11 @@ export const handle: Handle = async ({ event, resolve }) => {
   const cookies = cookie.parse(event.request.headers.get('cookie') || '')
   event.locals.userid = cookies['userid'] || crypto.randomUUID()
 
-  const response = await resolve(event)
+  const appTheme = cookies['appTheme'] || 'light'
+
+  const response = await resolve(event, {
+    transformPageChunk: ({ html }) => html.replace('%appTheme%', appTheme)
+  })
 
   if (!cookies['userid']) {
     // if this is the first time the user has visited this app,
