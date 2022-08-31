@@ -1,6 +1,6 @@
 <script>
     import Button from "../../attractions/button/Button.svelte"
-    import { Storage } from "../../helpers/storage-helper.js"
+    import { Storage } from "../../helpers/storage-helper"
     import WhiteBalanceSunnyIcon from "../../mdi/WhiteBalanceSunnyIcon.svelte"
     import MoonIcon from "../../mdi/MoonIcon.svelte"
     import { browser } from "$app/environment"
