@@ -20,10 +20,10 @@
 
 </script>
 
-<Button round on:click={toggle}>
+<Button round on:click={toggle} small>
     {#if theme === 'dark'}
-        <WhiteBalanceSunnyIcon/>
+        <WhiteBalanceSunnyIcon size="20"/>
     {:else if theme === 'light'}
-        <MoonIcon/>
+        <MoonIcon size="20"/>
     {/if}
 </Button>
