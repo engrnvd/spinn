@@ -1,8 +1,8 @@
 <script>
-    import ShareVariantIcon from "../../mdi/ShareVariantIcon.svelte"
+    import CogOutlineIcon from "../../mdi/CogOutlineIcon.svelte"
     import Button from "../../attractions/button/Button.svelte"
 </script>
 
 <Button small round>
-    <ShareVariantIcon/>
+    <CogOutlineIcon/>
 </Button>

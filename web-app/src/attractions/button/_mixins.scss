@@ -42,11 +42,11 @@
 @mixin flat-interactive-background($color) {
     &,
     &.outline {
-        &:hover:not([disabled]) {
+        &:not([disabled]) {
             background: color.adjust($color, $alpha: -0.85);
         }
 
-        &:focus:not([disabled]) {
+        &:hover:not([disabled]) {
             background: color.adjust($color, $alpha: -0.78);
         }
     }
