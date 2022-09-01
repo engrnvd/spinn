@@ -1,8 +1,8 @@
 <script>
+    import IconBtn from "../base-components/IconBtn.svelte"
     import ShareVariantIcon from "../../mdi/ShareVariantIcon.svelte"
-    import Button from "../../attractions/button/Button.svelte"
 </script>
 
-<Button small round>
+<IconBtn tooltip="Share">
     <ShareVariantIcon/>
-</Button>
+</IconBtn>

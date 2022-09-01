@@ -79,6 +79,7 @@
     export let noPrefetch = false;
 
     export let loading = false
+    export let iconBtn = false
 
     /**
      * List of handlers for the [Events](https://illright.github.io/attractions/docs/utilities) action.
@@ -117,6 +118,7 @@
             class:rectangle
             class:small
             class:selected
+            class:iconBtn
             on:click={e => dispatch('click', { nativeEvent: e })}
             use:eventsAction={events}
             use:ripple={{ disabled: noRipple || disabled }}
@@ -137,6 +139,7 @@
             class:rectangle
             class:small
             class:selected
+            class:iconBtn
             on:click={e => dispatch('click', { nativeEvent: e })}
             use:ripple={{ disabled: noRipple || disabled }}
             use:eventsAction={events}

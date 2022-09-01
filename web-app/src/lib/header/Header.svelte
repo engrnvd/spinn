@@ -12,6 +12,9 @@
 <header class="main-header">
     <ProgressBar/>
     <HomeLink/>
+    <h4 class="m-0 text-muted">Untitled</h4>
+    <div class="separator"></div>
+
     <div class="flex-grow-1"></div>
     <ViewToggleButton/>
     <DarkModeToggle/>
@@ -35,16 +38,5 @@
         height: 1.5em;
         margin: 0 0.5em;
         background-color: var(--light);
-    }
-
-    .main-header {
-        :global(.btn svg) {
-            width: 20px;
-            height: 20px;
-        }
-
-        :global(.btn) {
-            background-color: transparent;
-        }
     }
 </style>

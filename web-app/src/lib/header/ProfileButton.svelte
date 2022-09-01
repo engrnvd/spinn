@@ -1,8 +1,8 @@
 <script>
-    import AccountCircleIcon from "../../mdi/AccountCircleIcon.svelte"
-    import Button from "../../attractions/button/Button.svelte"
+    import AccountOutlineIcon from "../../mdi/AccountOutlineIcon.svelte"
+    import IconBtn from "../base-components/IconBtn.svelte"
 </script>
 
-<Button round small>
-    <AccountCircleIcon/>
-</Button>
+<IconBtn tooltip="Profile">
+    <AccountOutlineIcon/>
+</IconBtn>

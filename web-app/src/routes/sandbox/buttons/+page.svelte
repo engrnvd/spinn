@@ -4,6 +4,8 @@
 </svelte:head>
 
 <script>
+    import AccountIcon from "../../../mdi/AccountIcon.svelte"
+    import IconBtn from "../../../lib/base-components/IconBtn.svelte"
     import Button from "../../../attractions/button/Button.svelte"
 
     let loading = false
@@ -14,7 +16,11 @@
     }
 </script>
 
-<div class="content">
+<div class="d-flex align-items-center gap-4 flex-wrap">
+    <IconBtn tooltip="Profile">
+        <AccountIcon/>
+    </IconBtn>
+
     <Button filled danger {loading} on:click={onClick}>
         click me
     </Button>
@@ -44,10 +50,3 @@
     </Button>
 </div>
 
-<style lang="scss">
-    .content {
-        :global(.btn) {
-            margin: 1em;
-        }
-    }
-</style>

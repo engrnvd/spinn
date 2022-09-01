@@ -8,6 +8,7 @@
     --main-text: #{$main-text};
     --dark: #{$dark};
     --light: #eee;
+    --white: #fff;
     --muted: #6c757d;
     --font: #{$font};
     --danger: #{$danger};
@@ -72,4 +73,5 @@
     --background: #{color.adjust($dark-bg, $lightness: 3%)};
     --dark: #{$background};
     --light: #666;
+    --muted: #9fa8af;
 }

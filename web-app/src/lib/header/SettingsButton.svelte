@@ -1,8 +1,8 @@
 <script>
+    import IconBtn from "../base-components/IconBtn.svelte"
     import CogOutlineIcon from "../../mdi/CogOutlineIcon.svelte"
-    import Button from "../../attractions/button/Button.svelte"
 </script>
 
-<Button small round>
+<IconBtn tooltip="Project settings">
     <CogOutlineIcon/>
-</Button>
+</IconBtn>
