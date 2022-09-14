@@ -8,6 +8,7 @@ async function bootstrap() {
     logger: new ApmLogger()
   })
   app.useGlobalPipes(new ValidationPipe())
+  app.enableCors()
   await app.listen(3210)
 }
 
