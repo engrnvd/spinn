@@ -1,7 +1,7 @@
 <script lang="ts">
-  import Header from '$lib/header/Header.svelte'
   import '../styles/app.scss'
   import NavLink from '../lib/Nav/NavLink.svelte'
+  import Header from '../lib/header/Header.svelte'
 </script>
 
 <Header/>

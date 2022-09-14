@@ -8,10 +8,11 @@
 }
 
 p, div {
-    line-height: 1em;
+    line-height: 1;
 }
 
 body {
+    font-size: 1rem;
     background-color: var(--body-background);
     color: var(--dark);
     font-family: var(--font);

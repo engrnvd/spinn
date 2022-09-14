@@ -5,7 +5,7 @@ import { _sleep } from '$lib/helpers/misc'
 
 export const load: PageServerLoad = async (event: ServerLoadEvent) => {
   console.log('event', event)
-  await _sleep(3000)
+  await _sleep(100)
   return {
     secret: MY_SECRET
   }

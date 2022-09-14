@@ -6,11 +6,13 @@
 <script>
     import Card from '../../attractions/card/card.svelte'
     import { page } from '$app/stores'
+
+    let { users } = $page.data
 </script>
 
 <div class="content">
     <ul>
-        {#each $page.data.users as user}
+        {#each users as user}
             <li>{user.email}</li>
         {/each}
     </ul>
