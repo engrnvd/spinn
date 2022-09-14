@@ -10,7 +10,7 @@ export const load = async ({ fetch }: LoadEvent) => {
   }
 }
 
-export const csr = browser
+export const csr = true
 export const ssr = true
 export const prerender = false // set to true for static html pages
 
