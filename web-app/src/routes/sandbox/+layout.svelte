@@ -1,15 +1,14 @@
 <script>
-    import Loading from "../../attractions/loading/Loading.svelte"
     import H1 from "../../attractions/typography/H1.svelte"
     import NavLink from "../../lib/Nav/NavLink.svelte"
     import Button from '../../attractions/button/button.svelte'
-    import { getStores, navigating, page, updated } from '$app/stores'
+    import { navigating, page } from '$app/stores'
     import { goto, afterNavigate } from '$app/navigation'
 
     afterNavigate(nav => {
         console.log('nav', nav);
-        console.log('from', nav?.from?.pathname);
-        console.log('to', nav?.to?.pathname);
+        console.log('from', nav?.from?.url?.pathname);
+        console.log('to', nav?.to?.url?.pathname);
     })
 
     function go() {

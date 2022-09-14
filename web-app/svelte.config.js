@@ -10,10 +10,6 @@ const config = {
     kit: {
         adapter: adapter(),
 
-        // Override http methods in the Todo forms
-        methodOverride: {
-            allowed: ['PATCH', 'DELETE']
-        },
         env: {
             dir: process.cwd() + '/../backend',
             publicPrefix: 'PUBLIC_',
