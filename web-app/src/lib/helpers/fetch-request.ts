@@ -10,36 +10,35 @@
 import { FetchRequestConfig, HttpMethod } from './fetch-request-config'
 import { Cookie } from './cookie'
 import { TOKEN_KEY, USER_KEY } from './constants'
-import { DebounceFn } from './misc'
+import { writable } from 'svelte/store'
 
 export class FetchRequest {
   url
   firstRequest = true
-  lastRequestId = null
+  lastRequestId: any = null
   data = []
   error = ''
-  loading = false
+  loading = writable(false)
   loaded = false
   perPageOriginal = null
   allLoaded = false
-  // @ts-ignore
-  sendFn: DebounceFn
-  config: FetchRequestConfig = {
-    delay: 0,
-    delayFirstRequest: false,
+  config: FetchRequestConfig = {}
+  delay = 0
+  delayFirstRequest = false
+  pagination = false
+  paginationMode: 'append' | 'replace' = 'append'
+  params = {
+    page: 1,
+    perPage: 10
   }
 
   constructor(url: string, method: HttpMethod = 'GET', config: FetchRequestConfig = {}) {
     this.url = url
 
     // check for pagination
-    if (config.pagination) {
+    if (this.pagination) {
       // @ts-ignore
       this.data = { data: [] }
-      config.params = config.params || {}
-      config.params.perPage = config.params.perPage || 20
-      config.params.page = config.params.page || 1
-      config.paginationMode = config.paginationMode || 'replace'
     }
 
     this.mergeConfig(config)
@@ -83,18 +82,18 @@ export class FetchRequest {
       config = this.config
 
       // make request
-      this.loading = true
-      if (config.paginationMode === 'append' && !this.firstRequest) {
+      this.loading.set(true)
+      if (this.paginationMode === 'append' && !this.firstRequest) {
         // @ts-ignore
-        config.params.page++
+        this.params.page++
       }
       this.loaded = false
       this.error = ''
-      let delay = config.delay || 0
-      if (this.firstRequest && !config.delayFirstRequest) delay = 0
+      let delay = this.delay || 0
+      if (this.firstRequest && !this.delayFirstRequest) delay = 0
 
-      this.sendFn = this.sendFn || new DebounceFn(delay)
-      this.sendFn.run(() => {
+      if (this.lastRequestId) clearTimeout(this.lastRequestId)
+      this.lastRequestId = setTimeout(() => {
         // make new request
         fetch(this.url, config).then((res: Response) => res.json()).then(res => {
           // if (res.data?.status === 'fail' || res.data?.status === 'invalid_schema') {
@@ -102,7 +101,7 @@ export class FetchRequest {
           //   this.showError()
           //   return
           // }
-          if (config.pagination) {
+          if (this.pagination) {
             // @ts-ignore
             if (config.params.page !== 1 && config.paginationMode === 'append') {
               // @ts-ignore
@@ -126,17 +125,17 @@ export class FetchRequest {
           }
 
           if (typeof res === 'string') this.error = res
-          else this.error = res.data?.message || res.data?.error || res.data || 'Please try again later.'
+          else this.error = res.data?.message || res.data?.error || res.data || res
 
           this.showError()
         }).finally(() => {
           this.firstRequest = false
-          this.loading = false
+          this.loading.set(false)
           this.loaded = true
           if (this.error) reject(this.error)
           else resolve(this.data)
         })
-      })
+      }, delay)
     })
   }
 

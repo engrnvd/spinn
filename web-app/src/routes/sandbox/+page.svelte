@@ -4,8 +4,6 @@
 </svelte:head>
 
 <script>
-    import { onMount } from "svelte"
-    import { writable } from "svelte/store"
     import Button from "../../attractions/button/Button.svelte"
     import { FetchRequest } from "../../lib/helpers/fetch-request"
     import Card from '../../attractions/card/card.svelte'
@@ -13,18 +11,14 @@
 
     let { users } = $page.data
 
-    let req = new FetchRequest('')
+    let req = new FetchRequest('http://localhost:3210/users')
+    req.delay = 500
+    req.delayFirstRequest = true
+    const { loading } = req
 
     function sendIt() {
-        req.send().then(res => {
-            console.log('res', res)
-            req.data = res
-        })
+        req.send()
     }
-
-    onMount(() => {
-        req.url = 'http://localhost:3210/users'
-    })
 </script>
 
 <div class="content">
@@ -38,7 +32,7 @@
 
     <pre>
         url: {req.url}
-        loading: {req.loading}
+        loading: {$loading}
         data: {JSON.stringify(req.data)}
     </pre>
 

@@ -1,14 +1,6 @@
 export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'OPTIONS' | 'DELETE' | 'HEAD' | 'CONNECT' | 'TRACE'
 
 export type FetchRequestConfig = {
-  delay?: number,
-  delayFirstRequest?: boolean,
-  pagination?: boolean,
-  paginationMode?: 'append' | 'replace',
-  params?: {
-    page?: number,
-    perPage?: number,
-  },
   method?: HttpMethod,
   headers?: any,
   body?: Blob | ArrayBuffer | TypedArray | DataView | FormData | URLSearchParams | string | ReadableStream | Object,
