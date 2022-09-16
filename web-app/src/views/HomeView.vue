@@ -20,5 +20,8 @@ import UButton from '../U/components/UButton.vue'
         <div class="my-2">
             <UButton outline>Click me</UButton>
         </div>
+        <div class="my-2">
+            <UButton icon>🌞</UButton>
+        </div>
     </div>
 </template>

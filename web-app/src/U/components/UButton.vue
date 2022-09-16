@@ -4,11 +4,12 @@ import { defineProps } from 'vue'
 defineProps({
     flat: Boolean,
     outline: Boolean,
+    icon: Boolean,
 })
 </script>
 
 <template>
-    <button v-ripple class="u-btn" :class="{flat, outline}">
+    <button v-ripple class="u-btn" :class="{flat, outline, icon}">
         <slot></slot>
     </button>
 </template>
@@ -37,6 +38,12 @@ defineProps({
         box-shadow: none;
     }
 
+    &.icon {
+        width: var(--form-element-height);
+        min-width: initial;
+        border-radius: 50%;
+    }
+
     &.outline {
         background-color: transparent;
         border: 2px solid var(--primary);
@@ -44,7 +51,9 @@ defineProps({
         box-shadow: none;
 
         &:hover {
-            background-color: var(--primary-50);
+            background-color: var(--primary);
+            color: var(--bg);
+            border: none;
         }
 
         .ripple {
