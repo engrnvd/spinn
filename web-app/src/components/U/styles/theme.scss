@@ -1,0 +1,36 @@
+@use 'sass:color';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap');
+@import "./variables";
+
+:root {
+    --font: #{$font};
+    --font-size: #{$font};
+    --bg: #{$bg};
+    --body-bg: #{$body-bg};
+    --main-text-color: #{$main-text-color};
+    --primary: #{$primary};
+    --secondary: #{$secondary};
+    --danger: #{$danger};
+    --info: #{$info};
+    --warning: #{$warning};
+    --success: #{$success};
+    --dark: #{$dark};
+    --light: #{$light};
+    --muted: #{$muted};
+    --disabled-bg: #{$disabled-bg};
+    --disabled-text-color: #{$disabled-text-color};
+    --border-radius: #{$border-radius};
+    --shadow-0: #{$shadow-0};
+    --shadow-1: #{$shadow-1};
+    --shadow-raised: #{$shadow-raised};
+}
+
+.dark {
+    $dark-bg: #50565e;
+    --primary: #{color.adjust($primary, $lightness: 25%)};
+    --danger: #{color.adjust($danger, $lightness: 55%)};
+    --body-bg: #{$dark-bg};
+    --bg: #{color.adjust($dark-bg, $lightness: 3%)};
+    --light: #666;
+    --muted: #9fa8af;
+}
