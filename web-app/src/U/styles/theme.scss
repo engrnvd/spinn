@@ -9,7 +9,10 @@
     --body-bg: #{$body-bg};
     --main-text-color: #{$main-text-color};
     --primary: #{$primary};
-    --primary-50: #{color.adjust($primary, $alpha: -0.7)};
+    --primary-lighter: #{color.adjust($primary, $lightness: 45%)};
+    --primary-light: #{color.adjust($primary, $lightness: 5%)};
+    --primary-dark: #{color.adjust($primary, $lightness: -5%)};
+    --primary-darker: #{color.adjust($primary, $lightness: -10%)};
     --secondary: #{$secondary};
     --danger: #{$danger};
     --info: #{$info};
