@@ -24,9 +24,6 @@ import UButton from '../U/components/UButton.vue'
             <UButton icon>🌞</UButton>
         </div>
         <div class="my-2">
-            <UButton transparent icon>🌞</UButton>
-        </div>
-        <div class="my-2">
             <UButton transparent>Transparent</UButton>
         </div>
     </div>

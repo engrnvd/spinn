@@ -16,6 +16,30 @@ defineProps({
 </template>
 
 <style lang="scss">
+@mixin btn-default($color) {
+    background-color: var(--#{$color});
+    border: none;
+
+    &:hover {
+        background-color: var(--#{$color}-dark);
+    }
+}
+
+@mixin btn-transparent($color) {
+    background-color: transparent;
+    border: none;
+    color: var(--#{$color});
+    box-shadow: none;
+
+    &:hover {
+        background-color: var(--#{$color}-lighter);
+    }
+
+    .ripple {
+        background-color: rgba(0, 0, 0, 0.2) !important;
+    }
+}
+
 .u-btn {
     padding: 0 1em;
     height: var(--form-element-height);
@@ -23,17 +47,13 @@ defineProps({
     align-items: center;
     justify-content: center;
     outline: none;
-    border: none;
     min-width: 6em;
-    background-color: var(--primary);
     border-radius: var(--btn-border-radius);
     color: var(--bg);
     box-shadow: var(--shadow-1);
     line-height: 1;
 
-    &:hover {
-        background-color: var(--primary-dark);
-    }
+    @include btn-default(primary);
 
     &:active {
         box-shadow: none;
@@ -47,6 +67,7 @@ defineProps({
         width: var(--form-element-height);
         min-width: initial;
         border-radius: 50%;
+        @include btn-transparent(primary);
     }
 
     &.outline {
@@ -63,18 +84,7 @@ defineProps({
     }
 
     &.transparent {
-        background-color: transparent;
-        border: none;
-        color: var(--primary);
-        box-shadow: none;
-
-        &:hover {
-            background-color: var(--primary-lighter);
-        }
-
-        .ripple {
-            background-color: rgba(0, 0, 0, 0.2) !important;
-        }
+        @include btn-transparent(primary);
     }
 }
 
