@@ -1,5 +1,3 @@
-import { colorHelper } from '../helpers/color-helper'
-
 function createRipple(event: any) {
   const button = event.currentTarget
   button.style.position = 'relative'
@@ -25,9 +23,9 @@ function createRipple(event: any) {
 
 export const vRipple = {
   mounted: (el: any) => {
-    el.addEventListener('mousedown', createRipple)
+    el.addEventListener('click', createRipple)
   },
   unmounted: (el: any) => {
-    el.removeEventListener('mousedown', createRipple)
+    el.removeEventListener('click', createRipple)
   },
 }

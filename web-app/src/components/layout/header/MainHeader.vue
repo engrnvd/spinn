@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { RouterLink } from 'vue-router'
-import AppLogo from '../common/AppLogo.vue'
+import AppLogo from '../../common/AppLogo.vue'
+import ViewToggleBtn from './ViewToggleBtn.vue'
 
 </script>
 
@@ -10,8 +11,10 @@ import AppLogo from '../common/AppLogo.vue'
             <AppLogo/>
         </RouterLink>
         <h4 class="m-0 text-muted">Untitled</h4>
+
         <div class="flex-grow-1"></div>
 
+        <ViewToggleBtn/>
     </header>
 </template>
 
