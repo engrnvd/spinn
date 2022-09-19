@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import AccountHeartIcon from '../material-design-icons/AccountHeart.vue'
+import HeartIcon from '../material-design-icons/Heart.vue'
 import UButton from '../U/components/UButton.vue'
 </script>
 
@@ -21,7 +23,9 @@ import UButton from '../U/components/UButton.vue'
             <UButton outline>Click me</UButton>
         </div>
         <div class="my-2">
-            <UButton icon>🌞</UButton>
+            <UButton icon>
+                <HeartIcon/>
+            </UButton>
         </div>
         <div class="my-2">
             <UButton transparent>Transparent</UButton>

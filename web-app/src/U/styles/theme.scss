@@ -4,7 +4,7 @@
 
 :root {
     --font: #{$font};
-    --font-size: #{$font};
+    --font-size: #{$fontSize};
     --bg: #{$bg};
     --body-bg: #{$body-bg};
     --main-text-color: #{$main-text-color};
@@ -24,7 +24,7 @@
     --disabled-bg: #{$disabled-bg};
     --disabled-text-color: #{$disabled-text-color};
     --border-radius: #{$border-radius};
-    --btn-border-radius: 2.25em;
+    --btn-border-radius: 0.5em;
     --shadow-0: #{$shadow-0};
     --shadow-1: #{$shadow-1};
     --shadow-raised: #{$shadow-raised};
