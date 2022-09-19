@@ -25,6 +25,9 @@ import UButton from '../U/components/UButton.vue'
             <UButton icon>
                 <HeartIcon/>
             </UButton>
+            <UButton icon class="compact">
+                <HeartIcon/>
+            </UButton>
         </div>
         <div class="my-2">
             <UButton transparent>Transparent</UButton>

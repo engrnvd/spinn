@@ -64,13 +64,18 @@ defineProps({
     }
 
     &.icon {
-        --form-element-height: 2rem;
         width: var(--form-element-height);
         height: var(--form-element-height);
         padding: 0;
         min-width: initial;
         border-radius: 50%;
         @include btn-transparent(primary);
+        font-size: 1.5em;
+
+        &.compact {
+            font-size: 1.25em;
+            --form-element-height: 2rem;
+        }
     }
 
     &.outline {
