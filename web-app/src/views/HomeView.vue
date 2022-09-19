@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import AccountHeartIcon from '../material-design-icons/AccountHeart.vue'
 import HeartIcon from '../material-design-icons/Heart.vue'
 import UButton from '../U/components/UButton.vue'
 </script>
