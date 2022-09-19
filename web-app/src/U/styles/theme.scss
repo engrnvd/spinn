@@ -29,6 +29,8 @@
     --shadow-1: #{$shadow-1};
     --shadow-raised: #{$shadow-raised};
     --form-element-height: 2.75rem;
+    --ripple-light: rgba(255, 255, 255, 0.3);
+    --ripple-dark: rgba(0, 0, 0, 0.2);
 }
 
 [data-theme="dark"] {
@@ -40,4 +42,5 @@
     --light: #666;
     --muted: #9fa8af;
     --main-text-color: #{$bg};
+    --ripple-dark: var(--ripple-light);
 }

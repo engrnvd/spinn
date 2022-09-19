@@ -36,7 +36,7 @@ defineProps({
     }
 
     .ripple {
-        background-color: rgba(0, 0, 0, 0.2) !important;
+        background-color: var(--ripple-dark) !important;
     }
 }
 
