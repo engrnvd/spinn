@@ -1,6 +1,10 @@
 <script lang="ts" setup>
 import { RouterLink } from 'vue-router'
 import AppLogo from '../../common/AppLogo.vue'
+import ProfileBtn from './ProfileBtn.vue'
+import ProjectDownloadBtn from './ProjectDownloadBtn.vue'
+import ProjectSettingsBtn from './ProjectSettingsBtn.vue'
+import ProjectShareBtn from './ProjectShareBtn.vue'
 import ViewToggleBtn from './ViewToggleBtn.vue'
 import DarkModeToggleBtn from './DarkModeToggleBtn.vue'
 
@@ -17,6 +21,13 @@ import DarkModeToggleBtn from './DarkModeToggleBtn.vue'
 
         <ViewToggleBtn/>
         <DarkModeToggleBtn/>
+        <ProjectSettingsBtn/>
+        <ProjectDownloadBtn/>
+        <ProjectShareBtn/>
+
+        <div class="separator"></div>
+
+        <ProfileBtn/>
     </header>
 </template>
 
@@ -25,4 +36,10 @@ import DarkModeToggleBtn from './DarkModeToggleBtn.vue'
     border-bottom: none;
 }
 
+.separator {
+    width: 1px;
+    height: 1.5em;
+    margin: 0 0.5em;
+    background-color: var(--light);
+}
 </style>
