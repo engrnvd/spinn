@@ -85,7 +85,7 @@ defineProps({
         box-shadow: none;
 
         &:hover {
-            background-color: var(--primary-light);
+            background-color: var(--primary);
             color: var(--bg);
             border: none;
         }

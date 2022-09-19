@@ -9,8 +9,8 @@
     --body-bg: #{$body-bg};
     --main-text-color: #{$main-text-color};
     --primary: #{$primary};
-    --primary-lighter: #{color.adjust($primary, $lightness: 45%)};
-    --primary-light: #{color.adjust($primary, $lightness: 5%)};
+    --primary-lighter: #{color.adjust($primary, $alpha: -0.7)};
+    --primary-light: #{color.adjust($primary, $alpha: -0.4)};
     --primary-dark: #{color.adjust($primary, $lightness: -5%)};
     --primary-darker: #{color.adjust($primary, $lightness: -10%)};
     --secondary: #{$secondary};
@@ -31,7 +31,7 @@
     --form-element-height: 2.75rem;
 }
 
-.dark {
+[data-theme="dark"] {
     $dark-bg: #50565e;
     --primary: #{color.adjust($primary, $lightness: 25%)};
     --danger: #{color.adjust($danger, $lightness: 55%)};

@@ -2,6 +2,7 @@
 import { RouterLink } from 'vue-router'
 import AppLogo from '../../common/AppLogo.vue'
 import ViewToggleBtn from './ViewToggleBtn.vue'
+import DarkModeToggleBtn from './DarkModeToggleBtn.vue'
 
 </script>
 
@@ -15,6 +16,7 @@ import ViewToggleBtn from './ViewToggleBtn.vue'
         <div class="flex-grow-1"></div>
 
         <ViewToggleBtn/>
+        <DarkModeToggleBtn/>
     </header>
 </template>
 
