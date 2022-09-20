@@ -3,7 +3,7 @@ import { decrypt, encrypt } from './encryption-helper'
 const SALT = 'vue3.comp.1'
 
 export const Storage = {
-  get(key, defaultValue = '', encryption = true) {
+  get(key, defaultValue = '', encryption = false) {
     let value = localStorage.getItem(key)
     if (!encryption) return value || defaultValue
     return decrypt(value, SALT) || defaultValue

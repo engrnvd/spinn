@@ -1,13 +1,16 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import { FetchRequest } from '../helpers/fetch-request'
 import HeartIcon from '../material-design-icons/Heart.vue'
+import ApmModal from '../U/components/ApmModal.vue'
 import UButton from '../U/components/UButton.vue'
 
 let req = reactive(new FetchRequest('http://localhost:3210/users').withProps({
     delay: 500,
     delayFirstRequest: true,
 }))
+
+const modalOpened = ref(false)
 </script>
 
 <template>
@@ -24,7 +27,7 @@ let req = reactive(new FetchRequest('http://localhost:3210/users').withProps({
             <pre>{{ req }}</pre>
         </div>
         <div class="my-2">
-            <UButton flat>Click me</UButton>
+            <UButton flat @click="modalOpened = true">Open Modal</UButton>
         </div>
         <div class="my-2">
             <UButton outline>Click me</UButton>
@@ -40,5 +43,9 @@ let req = reactive(new FetchRequest('http://localhost:3210/users').withProps({
         <div class="my-2">
             <UButton transparent>Transparent</UButton>
         </div>
+
+        <ApmModal v-model="modalOpened" title="Log in">
+            <input type="text">
+        </ApmModal>
     </div>
 </template>
