@@ -11,12 +11,12 @@ export const Storage = {
   remove(key) {
     return localStorage.removeItem(key)
   },
-  set(key, value, encryption = true) {
+  set(key, value, encryption = false) {
     if (!value) return this.remove(key)
     if (encryption) value = encrypt(value, SALT)
     return localStorage.setItem(key, value)
   },
-  getObject(key, encryption = true) {
+  getObject(key, encryption = false) {
     let obj = this.get(key, null, encryption)
     try {
       obj = JSON.parse(obj)
@@ -25,7 +25,7 @@ export const Storage = {
       return null
     }
   },
-  setObject(key, value, encryption = true) {
+  setObject(key, value, encryption = false) {
     if (!value) return this.remove(key)
     return this.set(key, JSON.stringify(value), encryption)
   },
