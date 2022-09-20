@@ -5,7 +5,8 @@ import HeartIcon from '../material-design-icons/Heart.vue'
 import UButton from '../U/components/UButton.vue'
 
 let req = reactive(new FetchRequest('http://localhost:3210/users').withProps({
-    delay: 500
+    delay: 500,
+    delayFirstRequest: true,
 }))
 </script>
 

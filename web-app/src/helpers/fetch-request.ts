@@ -90,7 +90,7 @@ export class FetchRequest {
 
       // make request
       this.loading = true
-      if (this.paginationMode === 'append' && !this.firstRequest) {
+      if (this.pagination && this.paginationMode === 'append' && !this.firstRequest) {
         // @ts-ignore
         this.params.page++
       }
