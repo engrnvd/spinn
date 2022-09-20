@@ -29,7 +29,7 @@ const auth = useAuthStore()
             <UButton @click="req.send()">Click me</UButton>
         </div>
         <div class="my-2">
-            <UButton flat @click="modalOpened = true">Open Modal</UButton>
+            <UButton secondary flat @click="modalOpened = true">Open Modal</UButton>
         </div>
         <div class="my-2">
             <UButton outline>Click me</UButton>

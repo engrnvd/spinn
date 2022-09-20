@@ -6,16 +6,36 @@ defineProps({
     outline: Boolean,
     icon: Boolean,
     transparent: Boolean,
+    secondary: Boolean,
+    success: Boolean,
+    info: Boolean,
+    danger: Boolean,
+    light: Boolean,
+    dark: Boolean,
 })
 </script>
 
 <template>
-    <button v-ripple class="u-btn" :class="{flat, outline, icon, transparent}">
+    <button v-ripple class="u-btn" :class="{
+        primary: !secondary,
+        flat,
+        outline,
+        icon,
+        transparent,
+        secondary,
+        success,
+        info,
+        danger,
+        light,
+        dark,
+    }">
         <slot></slot>
     </button>
 </template>
 
 <style lang="scss">
+@import "../styles/variables";
+
 @mixin btn-default($color) {
     background-color: var(--#{$color});
     border: none;
@@ -40,6 +60,39 @@ defineProps({
     }
 }
 
+@mixin btn-outline($color) {
+    background-color: transparent;
+    border: 2px solid var(--#{$color});
+    color: var(--#{$color});
+    box-shadow: none;
+
+    &:hover {
+        background-color: var(--#{$color});
+        color: var(--bg);
+        border: none;
+    }
+}
+
+@mixin btn-variants {
+    @each $color, $value in $theme-colors {
+        &.#{$color} {
+            @include btn-default($color);
+
+            &.icon {
+                @include btn-transparent($color);
+            }
+
+            &.outline {
+                @include btn-outline($color)
+            }
+
+            &.transparent {
+                @include btn-transparent($color);
+            }
+        }
+    }
+}
+
 .u-btn {
     padding: 0 1.5em;
     height: var(--form-element-height);
@@ -55,8 +108,6 @@ defineProps({
     line-height: 1;
     text-transform: uppercase;
 
-    @include btn-default(primary);
-
     &:active {
         box-shadow: none;
     }
@@ -71,7 +122,6 @@ defineProps({
         padding: 0;
         min-width: initial;
         border-radius: 50%;
-        @include btn-transparent(primary);
         font-size: 1.5em;
 
         &.compact {
@@ -80,22 +130,7 @@ defineProps({
         }
     }
 
-    &.outline {
-        background-color: transparent;
-        border: 2px solid var(--primary);
-        color: var(--primary);
-        box-shadow: none;
-
-        &:hover {
-            background-color: var(--primary);
-            color: var(--bg);
-            border: none;
-        }
-    }
-
-    &.transparent {
-        @include btn-transparent(primary);
-    }
+    @include btn-variants
 }
 
 </style>

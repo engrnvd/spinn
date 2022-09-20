@@ -1,5 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import { devRoutes } from './dev-routes'
+
+// @ts-ignore
+const devModeRoutes = import.meta.env.DEV ? [
+  {
+    path: '/dev',
+    name: 'dev',
+    component: () => import('../views/dev/DevView.vue'),
+    children: [...devRoutes]
+  }
+] : []
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,7 +18,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
     },
     {
       path: '/projects',
@@ -24,6 +35,7 @@ const router = createRouter({
       name: 'sitemap',
       component: () => import('../views/SitemapView.vue')
     },
+    ...devModeRoutes,
   ]
 })
 

@@ -8,18 +8,6 @@
     --bg: #{$bg};
     --body-bg: #{$body-bg};
     --main-text-color: #{$main-text-color};
-    --primary: #{$primary};
-    --primary-lighter: #{color.adjust($primary, $alpha: -0.7)};
-    --primary-light: #{color.adjust($primary, $alpha: -0.4)};
-    --primary-dark: #{color.adjust($primary, $lightness: -5%)};
-    --primary-darker: #{color.adjust($primary, $lightness: -10%)};
-    --secondary: #{$secondary};
-    --danger: #{$danger};
-    --info: #{$info};
-    --warning: #{$warning};
-    --success: #{$success};
-    --dark: #{$dark};
-    --light: #{$light};
     --muted: #{$muted};
     --disabled-bg: #{$disabled-bg};
     --disabled-text-color: #{$disabled-text-color};
@@ -32,15 +20,20 @@
     --form-element-height: 2.5rem;
     --ripple-light: rgba(255, 255, 255, 0.3);
     --ripple-dark: rgba(0, 0, 0, 0.2);
+
+    @each $color, $value in $theme-colors {
+        --#{$color}: #{$value};
+        --#{$color}-lighter: #{color.adjust($value, $alpha: -0.7)};
+        --#{$color}-light: #{color.adjust($value, $alpha: -0.4)};
+        --#{$color}-dark: #{color.adjust($value, $lightness: -5%)};
+        --#{$color}-darker: #{color.adjust($value, $lightness: -10%)};
+    }
 }
 
 [data-theme="dark"] {
     $dark-bg: #50565e;
-    --primary: #{color.adjust($primary, $lightness: 25%)};
-    --danger: #{color.adjust($danger, $lightness: 55%)};
     --body-bg: #{$dark-bg};
     --bg: #{color.adjust($dark-bg, $lightness: 3%)};
-    --light: #666;
     --muted: #9fa8af;
     --main-text-color: #{$bg};
     --ripple-dark: var(--ripple-light);

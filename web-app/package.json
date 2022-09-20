@@ -7,7 +7,7 @@
     "preview": "vite preview --port 4173",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit",
-    "sass": "sass src/components/U/u-core.scss:style-for-ide.css"
+    "sass": "sass src/U/u-core.scss:style-for-ide.css"
   },
   "dependencies": {
     "pinia": "^2.0.22",
