@@ -41,8 +41,9 @@ defineProps({
 }
 
 .u-btn {
-    padding: 0 1em;
+    padding: 0 1.5em;
     height: var(--form-element-height);
+    font-size: 0.9rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,6 +53,7 @@ defineProps({
     color: var(--bg);
     box-shadow: var(--shadow-1);
     line-height: 1;
+    text-transform: uppercase;
 
     @include btn-default(primary);
 
