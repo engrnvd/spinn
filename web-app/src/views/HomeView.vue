@@ -2,6 +2,7 @@
 import { reactive, ref } from 'vue'
 import { FetchRequest } from '../helpers/fetch-request'
 import HeartIcon from '../material-design-icons/Heart.vue'
+import { useAuthStore } from '../stores/auth.store'
 import ApmModal from '../U/components/ApmModal.vue'
 import UButton from '../U/components/UButton.vue'
 
@@ -11,11 +12,13 @@ let req = reactive(new FetchRequest('http://localhost:3210/users').withProps({
 }))
 
 const modalOpened = ref(false)
+
+const auth = useAuthStore()
 </script>
 
 <template>
     <div class="p-4">
-        <h1>Home!</h1>
+        <h1>{{ auth.form.email || 'Home!' }}</h1>
         <h2>Home!</h2>
         <h3>Home!</h3>
         <h4>Home!</h4>
@@ -24,7 +27,6 @@ const modalOpened = ref(false)
         <p>Home!</p>
         <div class="my-2">
             <UButton @click="req.send()">Click me</UButton>
-            <pre>{{ req }}</pre>
         </div>
         <div class="my-2">
             <UButton flat @click="modalOpened = true">Open Modal</UButton>
@@ -45,7 +47,7 @@ const modalOpened = ref(false)
         </div>
 
         <ApmModal v-model="modalOpened" title="Log in">
-            <input type="text">
+            <input type="text" v-model="auth.form.email">
         </ApmModal>
     </div>
 </template>

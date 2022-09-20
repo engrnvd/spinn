@@ -10,6 +10,7 @@
     "sass": "sass src/components/U/u-core.scss:style-for-ide.css"
   },
   "dependencies": {
+    "pinia": "^2.0.22",
     "vue": "^3.2.38",
     "vue-router": "^4.1.5"
   },
