@@ -7,7 +7,7 @@
 * pagination: Whether to request paginated data. Type: Bool. Default: false
 * paginationMode: replace | append. Type: Bool. Default: 'replace'. Set to 'append' to implement "load more" feature)
 * */
-import { FetchRequestConfig, HttpMethod } from './fetch-request-config'
+import { HttpMethod } from './fetch-request-config'
 import { TOKEN_KEY, USER_KEY } from '../constants'
 import { Storage } from './storage-helper'
 
@@ -21,7 +21,7 @@ export class FetchRequest {
   loaded = false
   perPageOriginal = null
   allLoaded = false
-  config: FetchRequestConfig = {}
+  config: RequestInit = {}
   delay = 0
   delayFirstRequest = false
   pagination = false
@@ -38,7 +38,7 @@ export class FetchRequest {
     return this
   }
 
-  constructor(url: string, method: HttpMethod = 'GET', config: FetchRequestConfig = {}) {
+  constructor(url: string, method: HttpMethod = 'GET', config: RequestInit = {}) {
     this.url = url
 
     // check for pagination
@@ -51,7 +51,7 @@ export class FetchRequest {
     this.config.method = method
   }
 
-  mergeConfig(config: FetchRequestConfig) {
+  mergeConfig(config: RequestInit) {
     this.config = { ...this.config, ...config }
   }
 
@@ -77,7 +77,7 @@ export class FetchRequest {
     // store.commit('menu/toggleLoginModal', true)
   }
 
-  send(config: FetchRequestConfig = {}) {
+  send(config: RequestInit = {}) {
     return new Promise((resolve, reject) => {
       if (!this.url) {
         reject('No url to send request to')
@@ -145,7 +145,7 @@ export class FetchRequest {
     })
   }
 
-  upload(config: FetchRequestConfig, files = [], key = 'attachments', single = false) {
+  upload(config: RequestInit, files = [], key = 'attachments', single = false) {
     if (files instanceof File) {
       // @ts-ignore
       files = [files]
@@ -154,6 +154,7 @@ export class FetchRequest {
     if (files.length) {
       let formData = new FormData()
       if (config.hasOwnProperty('data')) {
+        // @ts-ignore
         for (let key in config.body) {
           formData.set(key, typeof config.body[key] === 'object' ? JSON.stringify(config.body[key]) : config.body[key])
         }
