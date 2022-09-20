@@ -7,9 +7,10 @@
 * pagination: Whether to request paginated data. Type: Bool. Default: false
 * paginationMode: replace | append. Type: Bool. Default: 'replace'. Set to 'append' to implement "load more" feature)
 * */
-import { HttpMethod } from './fetch-request-config'
 import { TOKEN_KEY, USER_KEY } from '../constants'
 import { Storage } from './storage-helper'
+
+export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'OPTIONS' | 'DELETE' | 'HEAD' | 'CONNECT' | 'TRACE'
 
 export class FetchRequest {
   url

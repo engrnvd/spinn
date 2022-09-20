@@ -1,6 +1,12 @@
 <script setup lang="ts">
+import { reactive } from 'vue'
+import { FetchRequest } from '../helpers/fetch-request'
 import HeartIcon from '../material-design-icons/Heart.vue'
 import UButton from '../U/components/UButton.vue'
+
+let req = reactive(new FetchRequest('http://localhost:3210/users').withProps({
+    delay: 500
+}))
 </script>
 
 <template>
@@ -13,7 +19,8 @@ import UButton from '../U/components/UButton.vue'
         <h6>Home!</h6>
         <p>Home!</p>
         <div class="my-2">
-            <UButton>Click me</UButton>
+            <UButton @click="req.send()">Click me</UButton>
+            <pre>{{ req }}</pre>
         </div>
         <div class="my-2">
             <UButton flat>Click me</UButton>
