@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { defineProps } from 'vue'
+import ULoading from './ULoading.vue'
 
 defineProps({
     flat: Boolean,
@@ -10,11 +11,13 @@ defineProps({
     success: Boolean,
     info: Boolean,
     danger: Boolean,
+    loading: Boolean,
+    disabled: Boolean,
 })
 </script>
 
 <template>
-    <button v-ripple class="u-btn" :class="{
+    <button :disabled="disabled || loading" v-ripple class="u-btn" :class="{
         primary: !secondary,
         flat,
         outline,
@@ -25,7 +28,8 @@ defineProps({
         info,
         danger,
     }">
-        <slot></slot>
+        <ULoading v-if="loading"/>
+        <slot v-else></slot>
     </button>
 </template>
 
@@ -113,6 +117,13 @@ defineProps({
     box-shadow: var(--shadow-0);
     line-height: 1;
     text-transform: uppercase;
+
+    &:disabled {
+        cursor: not-allowed;
+        background-color: var(--disabled-bg) !important;
+        color: var(--disabled-text-color) !important;
+        box-shadow: none;
+    }
 
     &:active {
         box-shadow: none;

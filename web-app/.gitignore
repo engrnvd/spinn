@@ -29,3 +29,5 @@ coverage
 
 style-for-ide.css
 style-for-ide.css.map
+
+src/env.ts

@@ -8,6 +8,7 @@
 * paginationMode: replace | append. Type: Bool. Default: 'replace'. Set to 'append' to implement "load more" feature)
 * */
 import { TOKEN_KEY, USER_KEY } from '../constants'
+import { env } from '../env'
 import { Storage } from './storage-helper'
 
 export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'OPTIONS' | 'DELETE' | 'HEAD' | 'CONNECT' | 'TRACE'
@@ -101,8 +102,16 @@ export class FetchRequest {
 
       if (this.lastRequestId) clearTimeout(this.lastRequestId)
       this.lastRequestId = setTimeout(() => {
-        // make new request
-        fetch(this.url, config).then((res: Response) => res.json()).then(res => {
+        // append the base url
+        const url = env.apiUrl + this.url.replace(/^\//, '')
+        // attach token if available
+        config.headers = config.headers || {}
+        let token = Storage.get(TOKEN_KEY)
+        if (token) { // @ts-ignore
+          config.headers.Authorization = `Bearer ${token}`
+        }
+
+        fetch(url, config).then((res: Response) => res.json()).then(res => {
           // if (res.data?.status === 'fail' || res.data?.status === 'invalid_schema') {
           //   this.error = res.data?.message || 'Something went wrong'
           //   this.showError()
