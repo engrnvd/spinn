@@ -80,7 +80,7 @@ defineProps({
                 color: contrastColor($value);
                 border: none;
 
-                &:hover {
+                &:hover, &:focus {
                     background-color: var(--#{$color}-dark);
                 }
 
@@ -109,8 +109,8 @@ defineProps({
     justify-content: center;
     outline: none;
     min-width: 6em;
-    border-radius: var(--btn-border-radius);
-    box-shadow: var(--shadow-1);
+    border-radius: var(--form-element-border-radius);
+    box-shadow: var(--shadow-0);
     line-height: 1;
     text-transform: uppercase;
 

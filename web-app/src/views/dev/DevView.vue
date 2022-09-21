@@ -9,7 +9,7 @@ const routes = reactive(devRoutes.map(r => r.path))
 
 <template>
     <div class="p-4">
-        <div class="d-flex align-items-center flex-wrap gap-4">
+        <div class="d-flex align-items-center flex-wrap gap-4 mb-5">
             <RouterLink v-for="route in routes" :to="route" :key="route">
                 {{ route }}
             </RouterLink>

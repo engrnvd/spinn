@@ -17,7 +17,7 @@ const alts = reactive(['default', 'transparent', 'flat', 'icon', 'outline'])
 
 <template>
     <div>
-        <div v-for="alt in alts">
+        <div v-for="alt in alts" class="mb-5 pb-4">
             <h2>{{ alt }}</h2>
             <div class="d-flex gap-4">
                 <div v-for="color in variants">

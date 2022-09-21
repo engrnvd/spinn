@@ -3,7 +3,7 @@ import { reactive, ref } from 'vue'
 import { FetchRequest } from '../helpers/fetch-request'
 import HeartIcon from '../material-design-icons/Heart.vue'
 import { useAuthStore } from '../stores/auth.store'
-import ApmModal from '../U/components/ApmModal.vue'
+import UModal from '../U/components/UModal.vue'
 import UButton from '../U/components/UButton.vue'
 
 let req = reactive(new FetchRequest('http://localhost:3210/users').withProps({
@@ -46,8 +46,8 @@ const auth = useAuthStore()
             <UButton transparent>Transparent</UButton>
         </div>
 
-        <ApmModal v-model="modalOpened" title="Log in">
+        <UModal v-model="modalOpened" title="Log in">
             <input type="text" v-model="auth.form.email">
-        </ApmModal>
+        </UModal>
     </div>
 </template>
