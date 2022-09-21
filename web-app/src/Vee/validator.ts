@@ -1,6 +1,11 @@
 export class Validator {
   errors = {}
   rules = {}
+  form
+
+  constructor(form) {
+    this.form = form
+  }
 
   hasErrors() {
     return Object.keys(this.errors).length > 0
@@ -15,18 +20,21 @@ export class Validator {
     this.errors = {}
   }
 
-  addRule(field, message, validationFn) {
+  addRule(rule) {
+    const [fieldName, message, fn] = rule
+    this.addCustomRule(fieldName, message, fn)
+  }
+
+  addCustomRule(field, message, validationFn) {
     this.rules[field] = this.rules[field] || []
-    this.rules[field].push({
-      field, message, validationFn
-    })
+    this.rules[field].push({ message, validationFn })
   }
 
   validateField(fieldName) {
     this.errors[fieldName] = []
     let rules = this.rules[fieldName]
     for (const rule of rules) {
-      if (!rule.validationFn()) {
+      if (!rule.validationFn(this)) {
         this.setError(fieldName, rule.message)
       }
     }

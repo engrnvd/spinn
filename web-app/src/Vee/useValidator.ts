@@ -1,8 +1,8 @@
 import { reactive, watch } from 'vue'
-import { Validator } from '../helpers/validator'
+import { Validator } from './validator'
 
 export function useValidator(form, fn) {
-  const v = reactive(new Validator())
+  const v = reactive(new Validator(form))
   fn(v)
 
   for (const field in v.rules) {

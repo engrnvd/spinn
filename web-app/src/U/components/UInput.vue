@@ -61,6 +61,7 @@ $uInputPadding: 0.75em;
             background-color: var(--bg);
             transition: border-color 0.2s ease-out;
             color: var(--u-input-text-color);
+            width: 100%;
 
             &::placeholder {
                 color: transparent;
@@ -92,6 +93,7 @@ $uInputPadding: 0.75em;
             transition: transform 0.2s ease-out;
             transform-origin: 0 0;
             pointer-events: none;
+            font-weight: normal;
         }
     }
 
