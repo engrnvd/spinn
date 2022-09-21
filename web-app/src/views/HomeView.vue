@@ -46,7 +46,7 @@ const auth = useAuthStore()
             <UButton transparent>Transparent</UButton>
         </div>
 
-        <UModal v-model="modalOpened" title="Log in">
+        <UModal v-model="modalOpened" title="Log in" no-footer body-class="p-0">
             <input type="text" v-model="auth.form.email">
         </UModal>
     </div>

@@ -8,10 +8,10 @@
                             <h2>{{ title }}</h2>
                         </slot>
                     </div>
-                    <div class="apm-modal-body p-4" :class="bodyClass">
+                    <div class="apm-modal-body" :class="bodyClass">
                         <slot></slot>
                     </div>
-                    <div class="apm-modal-footer d-flex p-4">
+                    <div v-if="!noFooter" class="apm-modal-footer d-flex p-4">
                         <slot name="footer">
                             <UButton class="mr-2" @click="ok" :disabled="okDisable">{{ okTitle }}</UButton>
                             <UButton secondary v-if="!okOnly" @click="cancel">{{ cancelTitle }}</UButton>
@@ -52,7 +52,7 @@ export default {
             type: Boolean,
             default: false
         },
-        loading: {
+        noFooter: {
             type: Boolean,
             default: false
         },
@@ -120,15 +120,8 @@ export default {
     }
 }
 
-.apm-modal-header {
-    border-bottom: 1px solid var(--border-color);
-}
-
-.apm-modal-footer {
-    border-top: 1px solid var(--border-color);
-}
-
 .apm-modal-body {
+    padding: 1em;
     max-height: calc(100vh - 13em);
     overflow: auto;
 }
