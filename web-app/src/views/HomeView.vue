@@ -1,47 +1,11 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
-import { FetchRequest } from '../helpers/fetch-request'
-import HeartIcon from '../material-design-icons/Heart.vue'
-import { useAuthStore } from '../stores/auth.store'
-import UButton from '../U/components/UButton.vue'
+import { useAppStore } from '../stores/app.store'
 
-let req = reactive(new FetchRequest('http://localhost:3210/users').withProps({
-    delay: 500,
-    delayFirstRequest: true,
-}))
-
-
-const auth = useAuthStore()
+const app = useAppStore()
 </script>
 
 <template>
-    <div class="p-4">
-        <h1>{{ auth.form.email || 'Home!' }}</h1>
-        <h2>Home!</h2>
-        <h3>Home!</h3>
-        <h4>Home!</h4>
-        <h5>Home!</h5>
-        <h6>Home!</h6>
-        <p>Home!</p>
-        <div class="my-2">
-            <UButton @click="req.send()">Click me</UButton>
-        </div>
-        <div class="my-2">
-            <UButton secondary flat>Open Modal</UButton>
-        </div>
-        <div class="my-2">
-            <UButton outline>Click me</UButton>
-        </div>
-        <div class="my-2">
-            <UButton icon>
-                <HeartIcon/>
-            </UButton>
-            <UButton icon class="compact">
-                <HeartIcon/>
-            </UButton>
-        </div>
-        <div class="my-2">
-            <UButton transparent>Transparent</UButton>
-        </div>
+    <div class="canvas-parent">
+        <pre>{{ app.sitemap }}</pre>
     </div>
 </template>

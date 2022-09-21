@@ -73,7 +73,7 @@ export function randomInt(from, to) {
   return Math.floor((Math.random() + from) * to)
 }
 
-export function cssVar(variable, value) {
+export function cssVar(variable, value = null) {
   let r = document.querySelector(':root')
   if (value) {
     // @ts-ignore

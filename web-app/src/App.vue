@@ -1,9 +1,20 @@
 <script setup lang="ts">
+import { onMounted } from 'vue'
+import MainLoader from './components/common/MainLoader.vue'
 import MainHeader from './components/layout/header/MainHeader.vue'
 import MainFooter from './components/layout/MainFooter.vue'
 import { RouterView } from 'vue-router'
+import { newSitemap } from './helpers/sitemap-helper'
+import { useAppStore } from './stores/app.store'
 import LoginModal from './views/LoginModal.vue'
 
+const app = useAppStore()
+
+onMounted(() => {
+    setTimeout(() => {
+        app.setSitemap(newSitemap())
+    }, 2000)
+})
 </script>
 
 <template>
@@ -17,6 +28,8 @@ import LoginModal from './views/LoginModal.vue'
         <MainFooter/>
 
         <LoginModal/>
+
+        <MainLoader v-if="!app.sitemap"/>
     </div>
 </template>
 
