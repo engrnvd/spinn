@@ -46,7 +46,7 @@ function submit() {
             </form>
             <UButton secondary class="w100 mt-6">
                 <div class="d-flex align-items-center justify-content-between gap-4">
-                    <GoogleIcon/>
+                    <GoogleIcon style="font-size: 1.25em"/>
                     <span>Continue with Google</span>
                 </div>
             </UButton>
