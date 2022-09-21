@@ -10,8 +10,6 @@ defineProps({
     success: Boolean,
     info: Boolean,
     danger: Boolean,
-    light: Boolean,
-    dark: Boolean,
 })
 </script>
 
@@ -26,8 +24,6 @@ defineProps({
         success,
         info,
         danger,
-        light,
-        dark,
     }">
         <slot></slot>
     </button>
@@ -35,24 +31,21 @@ defineProps({
 
 <style lang="scss">
 @import "../styles/variables";
+@import "../styles/functions";
 
-@mixin btn-default($color) {
-    background-color: var(--#{$color});
-    border: none;
-
-    &:hover {
-        background-color: var(--#{$color}-dark);
-    }
-}
-
-@mixin btn-transparent($color) {
+@mixin btn-transparent($color, $value) {
     background-color: transparent;
     border: none;
-    color: var(--#{$color});
+    @if ($color == secondary) {
+        color: var(--main-text-color);
+    } @else {
+        color: var(--#{$color});
+    }
     box-shadow: none;
 
     &:hover {
-        background-color: var(--#{$color}-lighter);
+        background-color: var(--#{$color}-light);
+        color: contrastColor($value);
     }
 
     .ripple {
@@ -60,34 +53,48 @@ defineProps({
     }
 }
 
-@mixin btn-outline($color) {
+@mixin btn-outline($color, $value) {
     background-color: transparent;
     border: 2px solid var(--#{$color});
-    color: var(--#{$color});
+    @if ($color == secondary) {
+        color: var(--main-text-color);
+        border: 2px solid var(--main-text-color);
+    } @else {
+        color: var(--#{$color});
+        border: 2px solid var(--#{$color});
+    }
     box-shadow: none;
 
     &:hover {
         background-color: var(--#{$color});
-        color: var(--bg);
+        color: contrastColor($value);
         border: none;
     }
 }
 
 @mixin btn-variants {
     @each $color, $value in $theme-colors {
-        &.#{$color} {
-            @include btn-default($color);
+        @if ($color != light and $color != dark) {
+            &.#{$color} {
+                background-color: var(--#{$color});
+                color: contrastColor($value);
+                border: none;
 
-            &.icon {
-                @include btn-transparent($color);
-            }
+                &:hover {
+                    background-color: var(--#{$color}-dark);
+                }
 
-            &.outline {
-                @include btn-outline($color)
-            }
+                &.icon {
+                    @include btn-transparent($color, $value);
+                }
 
-            &.transparent {
-                @include btn-transparent($color);
+                &.outline {
+                    @include btn-outline($color, $value);
+                }
+
+                &.transparent {
+                    @include btn-transparent($color, $value);
+                }
             }
         }
     }
@@ -103,7 +110,6 @@ defineProps({
     outline: none;
     min-width: 6em;
     border-radius: var(--btn-border-radius);
-    color: var(--bg);
     box-shadow: var(--shadow-1);
     line-height: 1;
     text-transform: uppercase;

@@ -9,11 +9,9 @@ const variants = reactive([
     'success',
     'info',
     'danger',
-    'light',
-    'dark',
 ])
 
-const alts = reactive(['default', 'outline', 'transparent', 'flat', 'icon'])
+const alts = reactive(['default', 'transparent', 'flat', 'icon', 'outline'])
 
 </script>
 
