@@ -3,9 +3,9 @@
         <div class="apm-modal-parent all-center" v-show="modelValue">
             <transition name="slide-down">
                 <div v-if="modelValue" class="apm-modal shadow" :class="`modal-${size}`">
-                    <div class="apm-modal-header p-4">
+                    <div class="apm-modal-header">
                         <slot name="header">
-                            <h2>{{ title }}</h2>
+                            <h2 class="m-0">{{ title }}</h2>
                         </slot>
                     </div>
                     <div class="apm-modal-body" :class="bodyClass">
@@ -17,6 +17,9 @@
                             <UButton secondary v-if="!okOnly" @click="cancel">{{ cancelTitle }}</UButton>
                         </slot>
                     </div>
+                    <a href="" class="close-modal-btn text-base" @click.prevent="cancel">
+                        <CloseIcon/>
+                    </a>
                 </div>
             </transition>
             <div class="modal-backdrop" @click="cancel"></div>
@@ -26,11 +29,12 @@
 
 <script>
 
+import CloseIcon from "@/material-design-icons/Close.vue"
 import UButton from "./UButton.vue"
 
 export default {
     name: "ApmModal",
-    components: { UButton },
+    components: { CloseIcon, UButton },
     props: {
         title: {},
         modelValue: {},
@@ -106,9 +110,10 @@ export default {
     width: 550px;
     max-width: 96vw;
     border-radius: 0.5em;
+    position: relative;
 
     &.modal-sm {
-        width: 400px;
+        width: 450px;
     }
 
     &.modal-lg {
@@ -118,11 +123,22 @@ export default {
     &.modal-xlg {
         width: 1150px;
     }
+
+    .close-modal-btn {
+        position: absolute;
+        right: 1em;
+        top: 1em;
+        font-size: 1.25em;
+    }
+}
+
+.apm-modal-header {
+    padding: 3em 3em 0;
 }
 
 .apm-modal-body {
-    padding: 1em;
-    max-height: calc(100vh - 13em);
+    padding: 3em;
+    max-height: calc(100vh - 5em);
     overflow: auto;
 }
 </style>

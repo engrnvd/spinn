@@ -111,7 +111,7 @@ a {
     background-color: transparent;
 
     &:hover {
-        color: var(--primary-darker);
+        filter: brightness(85%);
     }
 }
 

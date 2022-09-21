@@ -2,6 +2,7 @@
 import MainHeader from './components/layout/header/MainHeader.vue'
 import MainFooter from './components/layout/MainFooter.vue'
 import { RouterView } from 'vue-router'
+import LoginModal from './views/LoginModal.vue'
 
 </script>
 
@@ -14,6 +15,8 @@ import { RouterView } from 'vue-router'
         </main>
 
         <MainFooter/>
+
+        <LoginModal/>
     </div>
 </template>
 

@@ -3,7 +3,6 @@ import { reactive, ref } from 'vue'
 import { FetchRequest } from '../helpers/fetch-request'
 import HeartIcon from '../material-design-icons/Heart.vue'
 import { useAuthStore } from '../stores/auth.store'
-import UModal from '../U/components/UModal.vue'
 import UButton from '../U/components/UButton.vue'
 
 let req = reactive(new FetchRequest('http://localhost:3210/users').withProps({
@@ -11,7 +10,6 @@ let req = reactive(new FetchRequest('http://localhost:3210/users').withProps({
     delayFirstRequest: true,
 }))
 
-const modalOpened = ref(false)
 
 const auth = useAuthStore()
 </script>
@@ -29,7 +27,7 @@ const auth = useAuthStore()
             <UButton @click="req.send()">Click me</UButton>
         </div>
         <div class="my-2">
-            <UButton secondary flat @click="modalOpened = true">Open Modal</UButton>
+            <UButton secondary flat>Open Modal</UButton>
         </div>
         <div class="my-2">
             <UButton outline>Click me</UButton>
@@ -45,9 +43,5 @@ const auth = useAuthStore()
         <div class="my-2">
             <UButton transparent>Transparent</UButton>
         </div>
-
-        <UModal v-model="modalOpened" title="Log in" no-footer body-class="p-0">
-            <input type="text" v-model="auth.form.email">
-        </UModal>
     </div>
 </template>

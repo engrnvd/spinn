@@ -10,6 +10,9 @@ export const useAuthStore = defineStore('auth', {
       email: '',
       password: '',
     },
+    modals: {
+      login: false,
+    },
     loginReq: new FetchRequest('login', 'POST'),
     user: useStorage(USER_KEY),
     authToken: useStorage(TOKEN_KEY),

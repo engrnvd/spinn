@@ -7,8 +7,8 @@ export class Validator {
     this.form = form
   }
 
-  hasErrors() {
-    return Object.keys(this.errors).length > 0
+  get hasErrors() {
+    return Object.values(this.errors).flat().length > 0
   }
 
   setError(field, message) {

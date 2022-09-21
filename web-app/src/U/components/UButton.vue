@@ -103,12 +103,12 @@ defineProps({
 .u-btn {
     padding: 0 1.5em;
     height: var(--form-element-height);
-    font-size: 0.9rem;
+    font-size: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
     outline: none;
-    min-width: 6em;
+    min-width: 8em;
     border-radius: var(--form-element-border-radius);
     box-shadow: var(--shadow-0);
     line-height: 1;

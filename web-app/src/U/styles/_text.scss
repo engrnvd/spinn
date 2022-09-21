@@ -85,6 +85,10 @@ $font-weight-bolder: bolder !default;
     }
 }
 
+.text-base {
+    color: var(--main-text-color) !important;
+}
+
 .text-muted {
     color: var(--muted) !important;
 }
