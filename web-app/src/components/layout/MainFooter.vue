@@ -8,6 +8,7 @@ import { RouterLink } from 'vue-router'
         <nav class="main-nav d-flex gap-4">
             <RouterLink to="/">Home</RouterLink>
             <RouterLink to="/projects">Projects</RouterLink>
+            <RouterLink to="/dev">Dev</RouterLink>
         </nav>
     </header>
 </template>
