@@ -83,6 +83,9 @@ defineProps({
                 background-color: var(--#{$color});
                 color: contrastColor($value);
                 border: none;
+                @if ($color == secondary) {
+                    --ripple-light: var(--ripple-dark);
+                }
 
                 &:hover, &:focus {
                     background-color: var(--#{$color}-dark);
