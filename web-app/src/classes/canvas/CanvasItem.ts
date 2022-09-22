@@ -9,15 +9,15 @@ export class CanvasItem {
   left: number
   top: number
   fillColor: string
+  borderWidth = 0
+  borderColor: string
+  borderRadius = 0
   // text
   textColor: string
   text: string
+  fontSize: 0
   paddingX = 0
   paddingY = 0
-
-  borderWidth = 0
-  borderColor = ''
-  borderRadius = 0
 
   hoverable = false
   editable = false
@@ -40,8 +40,38 @@ export class CanvasItem {
     }
   }
 
-  get ctx() {
-    return this.canvas.ctx
+  drawRect() {
+    if (!this.fillColor && !this.borderWidth) return
+    const br = this.borderRadius
+    const ctx = this.canvas.ctx
+
+    ctx.beginPath()
+    ctx.moveTo(this.left, this.top + br)
+    if (br) ctx.quadraticCurveTo(this.left, this.top, this.left + br, this.top)
+    let nextX = this.right - br
+    ctx.lineTo(nextX, this.top)
+    if (br) ctx.quadraticCurveTo(this.right, this.top, this.right, this.top + br)
+    let nextY = this.bottom - br
+    ctx.lineTo(this.right, nextY)
+    if (br) ctx.quadraticCurveTo(this.right, this.bottom, this.right - br, this.bottom)
+    nextX = this.left + br
+    ctx.lineTo(nextX, this.bottom)
+    if (br) ctx.quadraticCurveTo(this.left, this.bottom, this.left, this.bottom - br)
+    nextY = this.top + br
+    ctx.lineTo(this.left, nextY)
+
+    if (this.fillColor) ctx.fillStyle = this.fillColor
+    if (this.borderColor) ctx.strokeStyle = this.borderColor
+    if (this.borderWidth) ctx.lineWidth = this.borderWidth
+
+    if (this.fillColor) ctx.fill()
+    if (this.borderColor || this.borderWidth) ctx.stroke()
+    ctx.closePath()
+  }
+
+  draw() {
+    if (this.isOutOfScreen()) return
+    this.drawRect()
   }
 
   isOutOfScreen() {
@@ -53,9 +83,9 @@ export class CanvasItem {
 
   update() {
     if (!this.canvas.draggedItem) {
-      if (this.hasMouseOver) {
+      if (this.hoverable && this.hasMouseOver) {
         this.canvas.setHoveredItem(this)
-      } else if (this.canvas.hoveredItem === this) {
+      } else if (this.isHoveredItem) {
         this.canvas.setHoveredItem(null)
       }
     }
