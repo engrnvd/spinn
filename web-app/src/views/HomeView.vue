@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { useAppStore } from '../stores/app.store'
+import SitemapEditor from './SitemapEditor.vue'
 
 const app = useAppStore()
 </script>
 
 <template>
-    <div class="canvas-parent">
-        <pre>{{ app.sitemap }}</pre>
-    </div>
+    <SitemapEditor/>
 </template>
