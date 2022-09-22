@@ -2,11 +2,23 @@ import { ApmCanvas } from './ApmCanvas'
 
 export class CanvasItem {
   canvas: ApmCanvas
+
+  // rect
   width: number
   height: number
   left: number
   top: number
-  color: string
+  fillColor: string
+  // text
+  textColor: string
+  text: string
+  paddingX = 0
+  paddingY = 0
+
+  borderWidth = 0
+  borderColor = ''
+  borderRadius = 0
+
   hoverable = false
   editable = false
   selectable = false
@@ -20,11 +32,12 @@ export class CanvasItem {
     return this.top + this.height
   }
 
-  constructor(canvas, data) {
+  constructor(canvas: ApmCanvas, data: Partial<CanvasItem>) {
     this.canvas = canvas
-    this.color = data.color
-    this.left = data.left
-    this.top = data.top
+
+    for (const key in data) {
+      this[key] = data[key]
+    }
   }
 
   get ctx() {
