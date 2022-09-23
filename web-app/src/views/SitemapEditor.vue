@@ -31,8 +31,29 @@ onMounted(() => {
             borderColor: cssVar('--primary-darker'),
             borderWidth: 5,
         })
-
         item.draw()
+
+        new CanvasItem(canvas, {
+            left: 600,
+            top: 100,
+            width: 200,
+            height: 200,
+            fillColor: cssVar('--primary'),
+            borderRadius: 220,
+            borderColor: cssVar('--primary-darker'),
+            borderWidth: 5,
+        }).draw()
+
+        new CanvasItem(canvas, {
+            left: 30,
+            top: 300,
+            width: 200,
+            height: 200,
+            fillColor: cssVar('--primary'),
+            borderRadius: 100,
+            borderColor: cssVar('--primary-darker'),
+            borderWidth: 5,
+        }).draw()
     }, 500)
 })
 

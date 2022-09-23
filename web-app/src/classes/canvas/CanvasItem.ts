@@ -43,20 +43,21 @@ export class CanvasItem {
   drawRect() {
     if (!this.fillColor && !this.borderWidth) return
     const br = this.borderRadius
+    const cpR = 0.4475 * br // ctrl pt ratio if r = 8 then cp = 3.58 = br * 0.4475
     const ctx = this.canvas.ctx
 
     ctx.beginPath()
     ctx.moveTo(this.left, this.top + br)
-    if (br) ctx.quadraticCurveTo(this.left, this.top, this.left + br, this.top)
+    if (br) ctx.bezierCurveTo(this.left, this.top + cpR, this.left + cpR, this.top, this.left + br, this.top)
     let nextX = this.right - br
     ctx.lineTo(nextX, this.top)
-    if (br) ctx.quadraticCurveTo(this.right, this.top, this.right, this.top + br)
+    if (br) ctx.bezierCurveTo(this.right - cpR, this.top, this.right, this.top + cpR, this.right, this.top + br)
     let nextY = this.bottom - br
     ctx.lineTo(this.right, nextY)
-    if (br) ctx.quadraticCurveTo(this.right, this.bottom, this.right - br, this.bottom)
+    if (br) ctx.bezierCurveTo(this.right, this.bottom - cpR, this.right - cpR, this.bottom, this.right - br, this.bottom)
     nextX = this.left + br
     ctx.lineTo(nextX, this.bottom)
-    if (br) ctx.quadraticCurveTo(this.left, this.bottom, this.left, this.bottom - br)
+    if (br) ctx.bezierCurveTo(this.left + cpR, this.bottom, this.left, this.bottom - cpR, this.left, this.bottom - br)
     nextY = this.top + br
     ctx.lineTo(this.left, nextY)
 
