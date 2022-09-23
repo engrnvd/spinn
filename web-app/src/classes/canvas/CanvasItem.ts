@@ -1,4 +1,6 @@
+import { cssVar } from '../../helpers/misc'
 import { ApmCanvas } from './ApmCanvas'
+import { canvasHelper } from './canvas-helper'
 
 export class CanvasItem {
   canvas: ApmCanvas
@@ -15,7 +17,7 @@ export class CanvasItem {
   // text
   textColor: string
   text: string
-  fontSize: 0
+  fontSize: number
   paddingX = 0
   paddingY = 0
 
@@ -70,9 +72,20 @@ export class CanvasItem {
     ctx.closePath()
   }
 
+  drawText() {
+    if (!this.text) return
+
+    const ctx = this.canvas.ctx
+    ctx.fillStyle = this.textColor
+    ctx.textBaseline = 'top'
+    ctx.font = `${this.fontSize}px ${cssVar('--font')}`
+    canvasHelper.wrappedText(ctx, this.text, this.width, this.left + this.paddingX, this.top + this.paddingY, this.fontSize)
+  }
+
   draw() {
     if (this.isOutOfScreen()) return
     this.drawRect()
+    this.drawText()
   }
 
   isOutOfScreen() {

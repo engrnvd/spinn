@@ -21,7 +21,7 @@ onMounted(() => {
         canvas.initialize(canvasEl.value)
         canvas.updateCanvasSize(rect.width, rect.height)
 
-        let item = new CanvasItem(canvas, {
+        new CanvasItem(canvas, {
             left: 100,
             top: 100,
             width: 400,
@@ -30,8 +30,12 @@ onMounted(() => {
             borderRadius: 20,
             borderColor: cssVar('--primary-darker'),
             borderWidth: 5,
-        })
-        item.draw()
+            text: 'Hello there!',
+            textColor: cssVar('--light'),
+            fontSize: 50,
+            paddingX: 50,
+            paddingY: 50,
+        }).draw()
 
         new CanvasItem(canvas, {
             left: 600,
