@@ -72,7 +72,7 @@ defineProps({
     &:hover {
         background-color: var(--#{$color});
         color: contrastColor($value);
-        border: none;
+        border-color: var(--#{$color});
     }
 }
 
