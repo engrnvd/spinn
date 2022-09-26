@@ -30,8 +30,9 @@ export const newSitemapTemplate = () => ({
         newSitemapBlock({ name: 'Footer' }),
       ],
       children: [
+        newSitemapPage({ color: cssVar('--danger') }),
         newSitemapPage(),
-        newSitemapPage(),
+        newSitemapPage({ color: cssVar('--danger') }),
         newSitemapPage(),
       ],
     }),

@@ -1,5 +1,6 @@
 import { cssVar } from '../helpers/misc'
 import { CanvasItem } from './canvas/CanvasItem'
+import { Connection } from './canvas/Connection'
 import { Sitemap } from './Sitemap'
 import { SitemapBlock } from './SitemapBlock'
 import { SitemapSection } from './SitemapSection'
@@ -87,6 +88,10 @@ export class SitemapPage {
 
   draw() {
     this.ci.draw()
-    if (this.children) this.children.forEach(p => p.draw())
+    if (this.children) this.children.forEach(p => {
+      p.draw()
+      const connection = new Connection(this, p)
+      connection.draw()
+    })
   }
 }
