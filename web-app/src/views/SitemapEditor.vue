@@ -3,9 +3,10 @@
 import { onMounted, ref } from 'vue'
 import { ApmCanvas } from '../classes/canvas/ApmCanvas'
 import { CanvasItem } from '../classes/canvas/CanvasItem'
+import { Sitemap } from '../classes/Sitemap'
 import MainLoader from '../components/common/MainLoader.vue'
 import { cssVar } from '../helpers/misc'
-import { newSitemap } from '../helpers/sitemap-helper'
+import { newSitemapTemplate } from '../helpers/sitemap-helper'
 import { useAppStore } from '../stores/app.store'
 
 const app = useAppStore()
@@ -15,7 +16,7 @@ const canvas = new ApmCanvas()
 
 onMounted(() => {
     setTimeout(() => {
-        app.setSitemap(newSitemap())
+        app.setSitemap(new Sitemap(newSitemapTemplate()))
 
         const rect = parentEl.value.getBoundingClientRect()
         canvas.initialize(canvasEl.value)
