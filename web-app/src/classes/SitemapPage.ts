@@ -87,7 +87,7 @@ export class SitemapPage {
 
     if (this.isRoot) {
       ci.top = 50
-      ci.left = canvas.vpCenter.x - width / 2
+      ci.left = canvas.width / 2 - width / 2
     } else if (parent) {
       const children = this.parent ? this.parent.children : this.section.pages
       const gap = width / 2

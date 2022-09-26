@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 
-import { onMounted, ref } from 'vue'
+import { update } from '@tweenjs/tween.js'
+import { onMounted, reactive, ref } from 'vue'
 import { ApmCanvas } from '../classes/canvas/ApmCanvas'
 import { Sitemap } from '../classes/Sitemap'
 import MainLoader from '../components/common/MainLoader.vue'
@@ -12,6 +13,12 @@ const parentEl = ref()
 const canvasEl = ref()
 const canvas = new ApmCanvas()
 
+const draw = () => {
+    app.sitemap.draw()
+    requestAnimationFrame(draw)
+    update()
+}
+
 onMounted(() => {
     const rect = parentEl.value.getBoundingClientRect()
     canvas.initialize(canvasEl.value)
@@ -19,7 +26,7 @@ onMounted(() => {
 
     setTimeout(() => {
         app.setSitemap(new Sitemap(canvas, newSitemapTemplate()))
-        app.sitemap.draw()
+        draw()
     }, 500)
 })
 
