@@ -94,6 +94,7 @@ export class CanvasItem {
 
   draw() {
     if (this.isOutOfScreen()) return
+    this.update()
     this.drawRect()
     this.drawText()
   }

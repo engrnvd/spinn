@@ -39,6 +39,8 @@ export class SitemapBlock {
       fillColor: this.color,
       text: this.name,
       textColor: cssVar('--light'),
+      selectable: true,
+      editable: true,
     }
     ci.height = blockHeight
     ci.top = parent.top + blockHeight + (blockHeight + blockGap) * this.index

@@ -82,6 +82,9 @@ export class SitemapPage {
       text: this.name,
       textBold: true,
       textColor: this.color,
+      hoverable: true,
+      selectable: true,
+      editable: true,
     }
     ci.height = blockHeight * 2
 
