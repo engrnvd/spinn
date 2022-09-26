@@ -59,8 +59,8 @@ export class SitemapPage {
       paddingY: fontSize * 0.5,
       borderRadius: fontSize * 0.25,
       blockHeight,
-      borderWidth: 1,
-      blockGap: fontSize * 0.5,
+      borderWidth: 2,
+      blockGap: fontSize * 0.25,
     }
   }
 

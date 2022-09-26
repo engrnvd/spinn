@@ -36,10 +36,9 @@ export class SitemapBlock {
       paddingY: fontSize * 0.5,
       height: 0,
       borderRadius: fontSize * 0.25,
-      borderColor: this.color,
-      borderWidth: 1,
+      fillColor: this.color,
       text: this.name,
-      textColor: this.color,
+      textColor: cssVar('--light'),
     }
     ci.height = blockHeight
     ci.top = parent.top + blockHeight + (blockHeight + blockGap) * this.index
