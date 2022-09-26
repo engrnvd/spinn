@@ -82,3 +82,7 @@ export function cssVar(variable, value = null): string {
   let rs = getComputedStyle(r)
   return rs.getPropertyValue(variable)
 }
+
+export function cssFontSize() {
+  return parseInt(cssVar('--font-size'))
+}

@@ -2,7 +2,7 @@ import { cssVar } from './misc'
 
 export const newSitemapBlock = (data = {}) => ({
   name: 'Block name',
-  color: cssVar('--secondary'),
+  color: cssVar('--info'),
   ...data,
 })
 
@@ -30,9 +30,9 @@ export const newSitemapTemplate = () => ({
         newSitemapBlock({ name: 'Footer' }),
       ],
       children: [
-        newSitemapPage({ color: cssVar('--danger') }),
+        newSitemapPage({ color: cssVar('--info') }),
         newSitemapPage(),
-        newSitemapPage({ color: cssVar('--danger') }),
+        newSitemapPage({ color: cssVar('--info') }),
         newSitemapPage(),
       ],
     }),

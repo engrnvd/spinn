@@ -17,6 +17,7 @@ export class CanvasItem {
   // text
   textColor: string
   text: string
+  textBold: Boolean = false
   fontSize: number
   paddingX = 0
   paddingY = 0
@@ -87,6 +88,7 @@ export class CanvasItem {
     ctx.fillStyle = this.textColor
     ctx.textBaseline = 'top'
     ctx.font = `${this.fontSize}px ${cssVar('--font')}`
+    if (this.textBold) ctx.font = `bold ${ctx.font}`
     canvasHelper.wrappedText(ctx, this.text, this.width, this.left + this.paddingX, this.top + this.paddingY, this.fontSize)
   }
 

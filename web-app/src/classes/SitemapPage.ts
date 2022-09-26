@@ -1,4 +1,4 @@
-import { cssVar } from '../helpers/misc'
+import { cssFontSize } from '../helpers/misc'
 import { CanvasItem } from './canvas/CanvasItem'
 import { Connection } from './canvas/Connection'
 import { Sitemap } from './Sitemap'
@@ -37,49 +37,72 @@ export class SitemapPage {
         })
       }
       if (blocks) {
-        for (const block of blocks) {
+        blocks.forEach((block, index) => {
+          block.index = block.index || index
           this.blocks.push(new SitemapBlock(this, block))
-        }
+        })
       }
     } catch (e) {
       console.error('Malformed page data.', e, data)
     }
   }
 
+  get styles() {
+    const fontSize = cssFontSize()
+    const width = 160
+    const paddingY = fontSize * 0.5
+    const blockHeight = fontSize + paddingY * 2
+    return {
+      width,
+      fontSize: fontSize * 0.8,
+      paddingX: fontSize * 0.5,
+      paddingY: fontSize * 0.5,
+      borderRadius: fontSize * 0.25,
+      blockHeight,
+      borderWidth: 1,
+      blockGap: fontSize * 0.5,
+    }
+  }
+
   update() {
     const parent = this.parent || this.section
     const canvas = this.sitemap.canvas
-    const fontSize = parseInt(cssVar('--font-size'))
-    const pageWidth = 160
-    const ci = {
+    const { width, fontSize, paddingX, paddingY, borderRadius, blockHeight, borderWidth, blockGap } = this.styles
+    const ci: Partial<CanvasItem> = {
       left: 0,
       top: 0,
-      width: pageWidth,
+      width,
       fontSize: fontSize,
-      paddingX: fontSize * 0.5,
-      paddingY: fontSize * 0.5,
+      paddingX,
+      paddingY,
       height: 0,
-      borderRadius: fontSize * 0.25,
+      borderRadius,
       borderColor: this.color,
-      borderWidth: 1,
+      borderWidth,
       text: this.name,
+      textBold: true,
       textColor: this.color,
     }
-    ci.height = ci.fontSize + ci.paddingY * 2
+    ci.height = blockHeight * 2
 
     if (this.isRoot) {
       ci.top = 50
-      ci.left = canvas.vpCenter.x - pageWidth / 2
+      ci.left = canvas.vpCenter.x - width / 2
     } else if (parent) {
       const children = this.parent ? this.parent.children : this.section.pages
-      const gap = pageWidth / 2
-      const totalW = children.length * pageWidth + (children.length - 1) * gap
+      const gap = width / 2
+      const totalW = children.length * width + (children.length - 1) * gap
       const startLeft = parent.ci.cx - totalW / 2
-      ci.left = startLeft + this.index * (pageWidth + gap)
+      ci.left = startLeft + this.index * (width + gap)
       ci.top = parent.ci.bottom + gap
     }
 
     this.ci = new CanvasItem(this.sitemap.canvas, ci)
+
+    if (this.blocks) this.blocks.forEach(b => {
+      b.update()
+      this.ci.height += b.ci.height + blockGap
+    })
 
     if (this.children) this.children.forEach(p => p.update())
 
@@ -93,5 +116,6 @@ export class SitemapPage {
       const connection = new Connection(this, p)
       connection.draw()
     })
+    if (this.blocks) this.blocks.forEach(b => b.draw())
   }
 }
