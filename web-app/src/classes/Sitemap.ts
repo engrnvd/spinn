@@ -1,8 +1,9 @@
+import { ApmCanvas } from './canvas/ApmCanvas'
 import { SitemapPage } from './SitemapPage'
 import { SitemapSection } from './SitemapSection'
 
 export class Sitemap {
-  canvas
+  canvas: ApmCanvas
   id: any
   name: string
   isTemplate: Boolean = false
@@ -12,15 +13,15 @@ export class Sitemap {
   updatedAt: any
   ownerId: any
 
-  constructor(canvas, data: any = {}) {
+  constructor(canvas: ApmCanvas, data: any = {}) {
     this.canvas = canvas
 
     try {
       for (const key in data) {
         if (key === 'pages') {
-          for (const page of data.pages) {
+          data.pages.forEach((page, index) => {
             this.pages.push(new SitemapPage(this, page))
-          }
+          })
         } else if (key === 'sections') {
           for (const section of data.sections) {
             this.sections.push(new SitemapSection(this, section))

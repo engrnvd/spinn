@@ -34,6 +34,14 @@ export class CanvasItem {
     return this.top + this.height
   }
 
+  get cx() {
+    return this.left + this.width / 2
+  }
+
+  get cy() {
+    return this.top + this.height / 2
+  }
+
   constructor(canvas: ApmCanvas, data: Partial<CanvasItem>) {
     this.canvas = canvas
 

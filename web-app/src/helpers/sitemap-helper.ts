@@ -10,7 +10,7 @@ export const newSitemapPage = (data = {}) => ({
   name: 'Page name',
   color: cssVar('--primary'),
   link: '',
-  is_root: false,
+  isRoot: false,
   blocks: [],
   ...data,
 })
@@ -20,7 +20,7 @@ export const newSitemapTemplate = () => ({
   pages: [
     newSitemapPage({
       name: 'Home',
-      is_root: true,
+      isRoot: true,
       blocks: [
         newSitemapBlock({ name: 'Header' }),
         newSitemapBlock({ name: 'Hero Section' }),

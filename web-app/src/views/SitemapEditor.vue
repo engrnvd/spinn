@@ -2,10 +2,8 @@
 
 import { onMounted, ref } from 'vue'
 import { ApmCanvas } from '../classes/canvas/ApmCanvas'
-import { CanvasItem } from '../classes/canvas/CanvasItem'
 import { Sitemap } from '../classes/Sitemap'
 import MainLoader from '../components/common/MainLoader.vue'
-import { cssVar } from '../helpers/misc'
 import { newSitemapTemplate } from '../helpers/sitemap-helper'
 import { useAppStore } from '../stores/app.store'
 
@@ -15,50 +13,16 @@ const canvasEl = ref()
 const canvas = new ApmCanvas()
 
 onMounted(() => {
+    const rect = parentEl.value.getBoundingClientRect()
+    canvas.initialize(canvasEl.value)
+    canvas.updateCanvasSize(rect.width, rect.height)
+
     setTimeout(() => {
-        app.setSitemap(new Sitemap(newSitemapTemplate()))
+        app.setSitemap(new Sitemap(canvas, newSitemapTemplate()))
 
-        const rect = parentEl.value.getBoundingClientRect()
-        canvas.initialize(canvasEl.value)
-        canvas.updateCanvasSize(rect.width, rect.height)
-
-        new CanvasItem(canvas, {
-            left: 100,
-            top: 100,
-            width: 400,
-            height: 150,
-            fillColor: cssVar('--primary'),
-            borderRadius: 20,
-            borderColor: cssVar('--primary-darker'),
-            borderWidth: 5,
-            text: 'Hello there!',
-            textColor: cssVar('--light'),
-            fontSize: 50,
-            paddingX: 50,
-            paddingY: 50,
-        }).draw()
-
-        new CanvasItem(canvas, {
-            left: 600,
-            top: 100,
-            width: 200,
-            height: 200,
-            fillColor: cssVar('--primary'),
-            borderRadius: 220,
-            borderColor: cssVar('--primary-darker'),
-            borderWidth: 5,
-        }).draw()
-
-        new CanvasItem(canvas, {
-            left: 30,
-            top: 300,
-            width: 200,
-            height: 200,
-            fillColor: cssVar('--primary'),
-            borderRadius: 100,
-            borderColor: cssVar('--primary-darker'),
-            borderWidth: 5,
-        }).draw()
+        app.sitemap.pages.forEach(page => {
+            page.update().draw()
+        })
     }, 500)
 })
 

@@ -1,3 +1,4 @@
+import { CanvasItem } from './canvas/CanvasItem'
 import { Sitemap } from './Sitemap'
 import { SitemapPage } from './SitemapPage'
 
@@ -5,6 +6,7 @@ export class SitemapSection {
   sitemap: Sitemap
   name: string
   pages: SitemapPage[] = []
+  ci: CanvasItem = null
 
   constructor(sitemap: Sitemap, data) {
     this.sitemap = sitemap
