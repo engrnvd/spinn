@@ -48,13 +48,13 @@ export class SitemapPage {
   }
 
   get styles() {
-    const fontSize = cssFontSize()
+    const fontSize = cssFontSize() * 0.8
     const width = 160
     const paddingY = fontSize * 0.5
     const blockHeight = fontSize + paddingY * 2
     return {
       width,
-      fontSize: fontSize * 0.8,
+      fontSize,
       paddingX: fontSize * 0.5,
       paddingY: fontSize * 0.5,
       borderRadius: fontSize * 0.25,

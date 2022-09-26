@@ -24,14 +24,14 @@ export class SitemapBlock {
   }
 
   update() {
-    const fontSize = cssFontSize()
+    const fontSize = cssFontSize() * 0.8
     const parent = this.page.ci
     const { blockGap, blockHeight } = this.page.styles
     const ci: Partial<CanvasItem> = {
       left: parent.left + parent.paddingX,
       top: 0,
       width: parent.width - parent.paddingX * 2,
-      fontSize: fontSize * 0.8,
+      fontSize,
       paddingX: fontSize * 0.5,
       paddingY: fontSize * 0.5,
       height: 0,
