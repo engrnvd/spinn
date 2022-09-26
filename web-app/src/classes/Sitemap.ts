@@ -34,4 +34,10 @@ export class Sitemap {
       console.error('Malformed sitemap data.', e, data)
     }
   }
+
+  draw() {
+    this.pages.forEach(page => {
+      page.update().draw()
+    })
+  }
 }

@@ -19,10 +19,7 @@ onMounted(() => {
 
     setTimeout(() => {
         app.setSitemap(new Sitemap(canvas, newSitemapTemplate()))
-
-        app.sitemap.pages.forEach(page => {
-            page.update().draw()
-        })
+        app.sitemap.draw()
     }, 500)
 })
 

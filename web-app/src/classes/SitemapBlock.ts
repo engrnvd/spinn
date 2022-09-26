@@ -1,4 +1,4 @@
-import { cssVar } from '../helpers/misc'
+import { cssFontSize, cssVar } from '../helpers/misc'
 import { CanvasItem } from './canvas/CanvasItem'
 import { SitemapPage } from './SitemapPage'
 
@@ -24,8 +24,9 @@ export class SitemapBlock {
   }
 
   update() {
-    const fontSize = parseInt(cssVar('--font-size'))
+    const fontSize = cssFontSize()
     const parent = this.page.ci
+    const { blockGap, blockHeight } = this.page.styles
     const ci: Partial<CanvasItem> = {
       left: parent.left + parent.paddingX,
       top: 0,
@@ -40,10 +41,8 @@ export class SitemapBlock {
       text: this.name,
       textColor: this.color,
     }
-    const blockHeight = fontSize + ci.paddingY * 2
-    const gap = fontSize * 0.5
     ci.height = blockHeight
-    ci.top = parent.top + blockHeight + (blockHeight + gap) * this.index
+    ci.top = parent.top + blockHeight + (blockHeight + blockGap) * this.index
 
     this.ci = new CanvasItem(this.page.sitemap.canvas, ci)
 
