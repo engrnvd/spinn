@@ -6,7 +6,6 @@ import { useAppStore } from '../../stores/app.store'
 const app = useAppStore()
 const item = computed(() => app.canvas?.selectedItem)
 
-
 const height = cssFontSize() * 2
 const left = computed(() => item.value.relLeft)
 const top = computed(() => item.value.relTop - height - 3)

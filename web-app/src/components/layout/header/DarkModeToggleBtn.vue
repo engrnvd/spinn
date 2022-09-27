@@ -20,7 +20,7 @@ watchEffect(() => {
 </script>
 
 <template>
-    <UButton icon @click="toggle()">
+    <UButton icon transparent @click="toggle()">
         <svg viewBox="0 0 24 24" width="1em"
              fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
             <path :d="path"></path>

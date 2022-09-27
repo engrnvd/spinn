@@ -13,6 +13,7 @@ defineProps({
     danger: Boolean,
     loading: Boolean,
     disabled: Boolean,
+    compact: Boolean,
 })
 </script>
 
@@ -27,6 +28,7 @@ defineProps({
         success,
         info,
         danger,
+        compact,
     }">
         <ULoading v-if="loading"/>
         <slot v-else></slot>
@@ -91,10 +93,6 @@ defineProps({
                     background-color: var(--#{$color}-dark);
                 }
 
-                &.icon {
-                    @include btn-transparent($color, $value);
-                }
-
                 &.outline {
                     @include btn-outline($color, $value);
                 }
@@ -136,6 +134,11 @@ defineProps({
         box-shadow: none;
     }
 
+    &.compact {
+        font-size: 0.9em;
+        --form-element-height: 2rem;
+    }
+
     &.icon {
         width: var(--form-element-height);
         height: var(--form-element-height);
@@ -146,7 +149,6 @@ defineProps({
 
         &.compact {
             font-size: 1.25em;
-            --form-element-height: 2rem;
         }
     }
 

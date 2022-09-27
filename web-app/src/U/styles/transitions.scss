@@ -16,10 +16,10 @@
 }
 
 .zoom-in-enter-active, .zoom-in-leave-active {
-    transition: all 1.25s ease-in;
+    transition: all 0.125s ease-in;
 }
 
-.zoom-in-leave-to {
-    transform: scale(5) translateY(-100px) translateX(100px);
+.zoom-in-enter-from, .zoom-in-leave-to {
+    transform: scale(0);
     opacity: 0;
 }

@@ -7,7 +7,7 @@ const auth = useAuthStore()
 </script>
 
 <template>
-    <UButton icon @click="auth.modals.login = true">
+    <UButton icon transparent @click="auth.modals.login = true">
         <AccountOutlineIcon/>
     </UButton>
 </template>

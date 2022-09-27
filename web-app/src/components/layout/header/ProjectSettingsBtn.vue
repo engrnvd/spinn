@@ -5,7 +5,7 @@ import UButton from '../../../U/components/UButton.vue'
 </script>
 
 <template>
-    <UButton icon>
+    <UButton icon transparent>
         <CogOutlineIcon/>
     </UButton>
 </template>

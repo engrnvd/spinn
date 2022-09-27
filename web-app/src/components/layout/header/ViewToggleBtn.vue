@@ -14,7 +14,7 @@ function toggle() {
 </script>
 
 <template>
-    <UButton icon @click="toggle()">
+    <UButton icon transparent @click="toggle()">
         <svg viewBox="0 0 24 24" fill="currentColor" width="1em">
             <path :d="path"></path>
         </svg>
