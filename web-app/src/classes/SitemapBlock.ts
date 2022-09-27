@@ -18,34 +18,34 @@ export class SitemapBlock {
       for (const key in data) {
         this[key] = data[key]
       }
+
+      const fontSize = cssFontSize() * 0.8
+      this.ci = new CanvasItem(this.page.sitemap.canvas, {
+        top: 0,
+        fontSize,
+        paddingX: fontSize * 0.5,
+        paddingY: fontSize * 0.5,
+        height: 0,
+        borderRadius: fontSize * 0.25,
+        fillColor: this.color,
+        text: this.name,
+        textColor: cssVar('--light'),
+        selectable: true,
+        editable: true,
+        hoverable: true,
+      })
     } catch (e) {
       console.error('Malformed block data.', e, data)
     }
   }
 
   update() {
-    const fontSize = cssFontSize() * 0.8
     const parent = this.page.ci
     const { blockGap, blockHeight } = this.page.styles
-    const ci: Partial<CanvasItem> = {
-      left: parent.left + parent.paddingX,
-      top: 0,
-      width: parent.width - parent.paddingX * 2,
-      fontSize,
-      paddingX: fontSize * 0.5,
-      paddingY: fontSize * 0.5,
-      height: 0,
-      borderRadius: fontSize * 0.25,
-      fillColor: this.color,
-      text: this.name,
-      textColor: cssVar('--light'),
-      selectable: true,
-      editable: true,
-    }
-    ci.height = blockHeight
-    ci.top = parent.top + blockHeight + (blockHeight + blockGap) * this.index
-
-    this.ci = new CanvasItem(this.page.sitemap.canvas, ci)
+    this.ci.left = parent.left + parent.paddingX
+    this.ci.height = blockHeight
+    this.ci.width = parent.width - parent.paddingX * 2
+    this.ci.top = parent.top + blockHeight + (blockHeight + blockGap) * this.index
 
     return this
   }

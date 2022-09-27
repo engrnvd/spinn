@@ -43,6 +43,7 @@ onMounted(() => {
 
 .sitemap-editor {
     overflow: hidden;
+    user-select: none;
 }
 
 </style>

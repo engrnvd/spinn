@@ -89,7 +89,11 @@ export class CanvasItem {
     ctx.textBaseline = 'top'
     ctx.font = `${this.fontSize}px ${cssVar('--font')}`
     if (this.textBold) ctx.font = `bold ${ctx.font}`
-    canvasHelper.wrappedText(ctx, this.text, this.width, this.left + this.paddingX, this.top + this.paddingY, this.fontSize)
+    let text = this.text
+    if (this.isHoveredItem) text += ' (hovered)'
+    if (this.isSelectedItem) text += ' (selected)'
+    if (this.isEditedItem) text += ' (edited)'
+    canvasHelper.wrappedText(ctx, text, this.width, this.left + this.paddingX, this.top + this.paddingY, this.fontSize)
   }
 
   draw() {
@@ -124,6 +128,14 @@ export class CanvasItem {
 
   get isHoveredItem() {
     return this.canvas.hoveredItem === this
+  }
+
+  get isSelectedItem() {
+    return this.canvas.selectedItem === this
+  }
+
+  get isEditedItem() {
+    return this.canvas.editedItem === this
   }
 
   get hasMouseOver() {

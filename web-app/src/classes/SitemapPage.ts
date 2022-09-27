@@ -42,6 +42,26 @@ export class SitemapPage {
           this.blocks.push(new SitemapBlock(this, block))
         })
       }
+
+      const { width, fontSize, paddingX, paddingY, borderRadius, borderWidth } = this.styles
+      this.ci = new CanvasItem(this.sitemap.canvas, {
+        left: 0,
+        top: 0,
+        width,
+        fontSize: fontSize,
+        paddingX,
+        paddingY,
+        height: 0,
+        borderRadius,
+        borderColor: this.color,
+        borderWidth,
+        text: this.name,
+        textBold: true,
+        textColor: this.color,
+        hoverable: true,
+        selectable: true,
+        editable: true,
+      })
     } catch (e) {
       console.error('Malformed page data.', e, data)
     }
@@ -67,25 +87,8 @@ export class SitemapPage {
   update() {
     const parent = this.parent || this.section
     const canvas = this.sitemap.canvas
-    const { width, fontSize, paddingX, paddingY, borderRadius, blockHeight, borderWidth, blockGap } = this.styles
-    const ci: Partial<CanvasItem> = {
-      left: 0,
-      top: 0,
-      width,
-      fontSize: fontSize,
-      paddingX,
-      paddingY,
-      height: 0,
-      borderRadius,
-      borderColor: this.color,
-      borderWidth,
-      text: this.name,
-      textBold: true,
-      textColor: this.color,
-      hoverable: true,
-      selectable: true,
-      editable: true,
-    }
+    const { width, blockHeight, blockGap } = this.styles
+    const ci = this.ci
     ci.height = blockHeight * 2
 
     if (this.isRoot) {
@@ -99,8 +102,6 @@ export class SitemapPage {
       ci.left = startLeft + this.index * (width + gap)
       ci.top = parent.ci.bottom + gap
     }
-
-    this.ci = new CanvasItem(this.sitemap.canvas, ci)
 
     if (this.blocks) this.blocks.forEach(b => {
       b.update()

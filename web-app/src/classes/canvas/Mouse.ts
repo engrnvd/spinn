@@ -42,7 +42,11 @@ export class Mouse {
       this.clicked = true
       this.pressed = false
 
-      if (canvas.hoveredItem?.selectable) canvas.setSelectedItem(canvas.hoveredItem)
+      if (canvas.hoveredItem) {
+        if (canvas.hoveredItem.selectable) canvas.setSelectedItem(canvas.hoveredItem)
+      } else {
+        canvas.setSelectedItem(null)
+      }
     })
 
     canvas.element.addEventListener('mousedown', e => {
