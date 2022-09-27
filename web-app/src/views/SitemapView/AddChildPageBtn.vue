@@ -24,6 +24,6 @@ function onClick() {
 
 <style scoped lang="scss">
 .add-child-page-btn {
-    transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-25%);
 }
 </style>

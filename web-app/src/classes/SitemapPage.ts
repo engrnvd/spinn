@@ -76,7 +76,7 @@ export class SitemapPage {
     return {
       width,
       fontSize,
-      paddingX: fontSize * 0.5,
+      paddingX: fontSize * 0.75,
       paddingY: fontSize * 0.5,
       borderRadius: fontSize * 0.25,
       blockHeight,
@@ -88,9 +88,9 @@ export class SitemapPage {
   update() {
     const parent = this.parent || this.section
     const canvas = this.sitemap.canvas
-    const { width, blockHeight, blockGap } = this.styles
+    const { width, blockHeight, blockGap, fontSize, paddingY } = this.styles
     const ci = this.ci
-    ci.height = blockHeight * 2
+    ci.height = blockHeight * 2 + paddingY + blockGap
 
     if (this.isRoot) {
       ci.top = 50

@@ -19,7 +19,7 @@ defineProps({
     </UButton>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 @keyframes fade-in {
     from {
         opacity: 0;
@@ -33,6 +33,6 @@ defineProps({
 .page-hover-btn {
     position: absolute;
     animation: fade-in 0.25s ease-out;
-    --form-element-height: 1.5rem;
+    --form-element-height: 1.5rem !important;
 }
 </style>

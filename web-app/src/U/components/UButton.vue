@@ -106,7 +106,7 @@ defineProps({
 }
 
 .u-btn {
-    padding: 0 1.5em;
+    padding: 0;
     height: var(--form-element-height);
     font-size: 1rem;
     display: flex;

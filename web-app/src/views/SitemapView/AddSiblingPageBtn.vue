@@ -24,6 +24,6 @@ function onClick() {
 
 <style scoped lang="scss">
 .add-sibling-page-btn {
-    transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-25%) translateY(-50%);
 }
 </style>

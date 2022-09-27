@@ -1,0 +1,43 @@
+<script lang="ts" setup>
+import { computed } from 'vue'
+import PlusIcon from '../../material-design-icons/Plus.vue'
+import { useAppStore } from '../../stores/app.store'
+import UButton from '../../U/components/UButton.vue'
+
+const app = useAppStore()
+const item = computed(() => app.canvas?.hoveredItem)
+const page = computed(() => app.canvas?.hoveredItem?.meta)
+
+const style = computed(() => {
+    const height = item.value.meta.styles.blockHeight
+    const zoom = app.canvas.zoom.scale
+    return {
+        left: item.value.relLeft + (item.value.paddingX) * zoom + 'px',
+        top: item.value.relBottom - (height + item.value.paddingY + item.value.meta.styles.blockGap) * zoom + 'px',
+        width: item.value.relWidth - (item.value.paddingX * 2) * zoom + 'px',
+        borderRadius: (item.value.borderRadius) * zoom + 'px',
+        height: height * zoom + 'px',
+    }
+})
+
+function onClick() {
+
+}
+
+</script>
+
+<template>
+    <UButton
+        secondary flat
+        class="add-block-btn page-hover-btn"
+        :style="style"
+    >
+        <PlusIcon/>
+    </UButton>
+</template>
+
+<style scoped lang="scss">
+.add-block-btn {
+    min-width: 0;
+}
+</style>

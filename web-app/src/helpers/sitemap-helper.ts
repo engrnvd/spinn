@@ -28,10 +28,10 @@ export const newSitemapTemplate = () => ({
         newSitemapBlock({ name: 'Footer' }),
       ],
       children: [
-        newSitemapPage({ color: '#45a8e1' }),
-        newSitemapPage(),
-        newSitemapPage({ color: '#45a8e1' }),
-        newSitemapPage(),
+        newSitemapPage({ name: 'Page 1', color: '#45a8e1' }),
+        newSitemapPage({ name: 'Page 2' }),
+        newSitemapPage({ name: 'Page 3', color: '#45a8e1' }),
+        newSitemapPage({ name: 'Page 4' }),
       ],
     }),
   ]

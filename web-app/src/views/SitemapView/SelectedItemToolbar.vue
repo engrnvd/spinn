@@ -19,6 +19,8 @@ const width = computed(() => item.value.relWidth)
             left: `${left}px`,
             top: `${top}px`,
             height: `${height}px`,
+            borderRadius: `${height / 2}px`,
+            minWidth: `${width}px`
          }"
     >
         {{ item.meta.name }}
