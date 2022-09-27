@@ -4,6 +4,7 @@ import { canvasHelper } from './canvas-helper'
 
 export class CanvasItem {
   canvas: ApmCanvas
+  meta: any
 
   // rect
   width: number
@@ -41,6 +42,38 @@ export class CanvasItem {
 
   get cy() {
     return this.top + this.height / 2
+  }
+
+  get relCx() {
+    return this.relLeft + this.relWidth / 2
+  }
+
+  get relCy() {
+    return this.relTop + this.relHeight / 2
+  }
+
+  get relLeft() {
+    return this.canvas.origin.x + (this.left * this.canvas.zoom.scale)
+  }
+
+  get relTop() {
+    return this.canvas.origin.y + (this.top * this.canvas.zoom.scale)
+  }
+
+  get relRight() {
+    return this.canvas.origin.x + (this.right * this.canvas.zoom.scale)
+  }
+
+  get relBottom() {
+    return this.canvas.origin.y + (this.bottom * this.canvas.zoom.scale)
+  }
+
+  get relWidth() {
+    return this.width * this.canvas.zoom.scale
+  }
+
+  get relHeight() {
+    return this.height * this.canvas.zoom.scale
   }
 
   constructor(canvas: ApmCanvas, data: Partial<CanvasItem>) {

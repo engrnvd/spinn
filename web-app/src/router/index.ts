@@ -33,7 +33,7 @@ const router = createRouter({
     {
       path: '/m/:id',
       name: 'sitemap',
-      component: () => import('../views/SitemapView.vue')
+      component: () => import('../views/SitemapView/SitemapView.vue')
     },
     ...devModeRoutes,
   ]

@@ -33,6 +33,7 @@ export class SitemapBlock {
         selectable: true,
         editable: true,
         hoverable: true,
+        meta: this,
       })
     } catch (e) {
       console.error('Malformed block data.', e, data)

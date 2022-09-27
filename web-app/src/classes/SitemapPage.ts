@@ -61,6 +61,7 @@ export class SitemapPage {
         hoverable: true,
         selectable: true,
         editable: true,
+        meta: this,
       })
     } catch (e) {
       console.error('Malformed page data.', e, data)
