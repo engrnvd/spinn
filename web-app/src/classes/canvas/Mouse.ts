@@ -71,6 +71,8 @@ export class Mouse {
       this.y = e.offsetY
       this.moving = true
 
+      canvas.element.style.cursor = canvas.hoveredItem ? 'pointer' : 'initial'
+
       if (this.pressed) {
         if (canvas.hoveredItem) { // dragging an object
           if (!canvas.draggedItem) { // dont select a new object if already dragging

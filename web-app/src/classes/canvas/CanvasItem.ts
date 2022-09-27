@@ -1,4 +1,5 @@
 import { cssVar } from '../../helpers/misc'
+import { colorHelper } from '../../U/helpers/color-helper'
 import { ApmCanvas } from './ApmCanvas'
 import { canvasHelper } from './canvas-helper'
 
@@ -105,8 +106,8 @@ export class CanvasItem {
     nextY = this.top + br
     ctx.lineTo(this.left, nextY)
 
-    if (this.fillColor) ctx.fillStyle = this.fillColor
-    if (this.borderColor) ctx.strokeStyle = this.borderColor
+    if (this.fillColor) ctx.fillStyle = this.shadedColor(this.fillColor)
+    if (this.borderColor) ctx.strokeStyle = this.shadedColor(this.borderColor)
     if (this.borderWidth) ctx.lineWidth = this.borderWidth
 
     if (this.fillColor) ctx.fill()
@@ -114,19 +115,19 @@ export class CanvasItem {
     ctx.closePath()
   }
 
+  shadedColor(color) {
+    return this.isHoveredItem ? colorHelper.darken(color, 20) : color
+  }
+
   drawText() {
     if (!this.text) return
 
     const ctx = this.canvas.ctx
-    ctx.fillStyle = this.textColor
+    ctx.fillStyle = this.fillColor ? this.textColor : this.shadedColor(this.textColor)
     ctx.textBaseline = 'top'
     ctx.font = `${this.fontSize}px ${cssVar('--font')}`
     if (this.textBold) ctx.font = `bold ${ctx.font}`
-    let text = this.text
-    if (this.isHoveredItem) text += ' (hovered)'
-    if (this.isSelectedItem) text += ' (selected)'
-    if (this.isEditedItem) text += ' (edited)'
-    canvasHelper.wrappedText(ctx, text, this.width, this.left + this.paddingX, this.top + this.paddingY, this.fontSize)
+    canvasHelper.wrappedText(ctx, this.text, this.width, this.left + this.paddingX, this.top + this.paddingY, this.fontSize)
   }
 
   draw() {

@@ -7,6 +7,9 @@ import { Sitemap } from '@/classes/Sitemap'
 import MainLoader from '@/components/common/MainLoader.vue'
 import { newSitemapTemplate } from '@/helpers/sitemap-helper'
 import { useAppStore } from '@/stores/app.store'
+import AddChildPageBtn from './AddChildPageBtn.vue'
+import AddSiblingPageBtn from './AddSiblingPageBtn.vue'
+import CollapsePageBtn from './CollapsePageBtn.vue'
 import SelectedItemToolbar from './SelectedItemToolbar.vue'
 
 const app = useAppStore()
@@ -39,6 +42,9 @@ onMounted(() => {
         <MainLoader v-if="!app.sitemap"/>
 
         <SelectedItemToolbar v-if="canvas.selectedItem"/>
+        <AddChildPageBtn v-if="canvas.hoveredItem && app.hasHoveredPage"/>
+        <AddSiblingPageBtn v-if="canvas.hoveredItem && app.hasHoveredPage && !canvas.hoveredItem?.meta?.isRoot"/>
+        <CollapsePageBtn v-if="canvas.hoveredItem && app.hasHoveredPage && canvas.hoveredItem?.meta?.children?.length"/>
     </div>
 </template>
 
