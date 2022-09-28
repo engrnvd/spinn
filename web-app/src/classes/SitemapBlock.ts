@@ -4,6 +4,7 @@ import { SitemapPage } from './SitemapPage'
 
 export class SitemapBlock {
   page: SitemapPage
+  _type: 'block'
   name: string
   body: string
   color: string
@@ -44,6 +45,7 @@ export class SitemapBlock {
   update() {
     const parent = this.page.ci
     const { blockGap, blockHeight } = this.page.styles
+    this.ci.text = this.name
     this.ci.left = parent.left + parent.paddingX
     this.ci.height = blockHeight
     this.ci.width = parent.width - parent.paddingX * 2

@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { computed, ref, watchEffect } from 'vue'
+import { EditItemNameCommand } from '../../commands/EditItemNameCommand'
 import { DebounceFn } from '../../helpers/misc'
 import { useAppStore } from '../../stores/app.store'
 
@@ -36,7 +37,8 @@ function onChange(e) {
         const newValue = e.target.value
         if (existingValue === newValue) return close()
 
-        console.log('existingValue, newValue', existingValue, newValue)
+        new EditItemNameCommand({ item: item.value.meta, name: newValue }).execute()
+
         setTimeout(close)
     })
 }

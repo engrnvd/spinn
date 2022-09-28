@@ -3,6 +3,7 @@ import { Sitemap } from './Sitemap'
 import { SitemapPage } from './SitemapPage'
 
 export class SitemapSection {
+  _type: 'section'
   sitemap: Sitemap
   name: string
   children: SitemapPage[] = []
@@ -14,7 +15,7 @@ export class SitemapSection {
       for (const key in data) {
         if (key === 'pages') {
           for (const page of data.children) {
-            this.children.push(new SitemapPage(this.sitemap, page, this))
+            this.children.push(new SitemapPage(this.sitemap, page))
           }
         } else {
           this[key] = data[key]

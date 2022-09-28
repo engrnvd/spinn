@@ -11,6 +11,7 @@ import { SitemapBlock } from './SitemapBlock'
 export class SitemapPage {
   sitemap: Sitemap
   parent: SitemapPage
+  _type: 'page'
   name: string
   color: string
   link: string
@@ -92,6 +93,7 @@ export class SitemapPage {
     const { width, blockHeight, blockGap, fontSize, paddingY } = this.styles
     const ci = this.ci
     ci.height = blockHeight * 2 + paddingY + blockGap
+    ci.text = this.name
 
     if (this.isRoot) {
       ci.top = 50
