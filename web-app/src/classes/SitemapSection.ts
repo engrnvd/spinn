@@ -5,7 +5,7 @@ import { SitemapPage } from './SitemapPage'
 export class SitemapSection {
   sitemap: Sitemap
   name: string
-  pages: SitemapPage[] = []
+  children: SitemapPage[] = []
   ci: CanvasItem = null
 
   constructor(sitemap: Sitemap, data) {
@@ -13,8 +13,8 @@ export class SitemapSection {
     try {
       for (const key in data) {
         if (key === 'pages') {
-          for (const page of data.pages) {
-            this.pages.push(new SitemapPage(this.sitemap, page, this))
+          for (const page of data.children) {
+            this.children.push(new SitemapPage(this.sitemap, page, this))
           }
         } else {
           this[key] = data[key]

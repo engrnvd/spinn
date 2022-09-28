@@ -1,27 +1,25 @@
+import { AddPageCommand } from '../commands/AddPageCommand'
 import { cssFontSize } from '../helpers/misc'
+import { defaultPage } from '../helpers/sitemap-helper'
 import { CanvasItem } from './canvas/CanvasItem'
 import { Connection } from './canvas/Connection'
 import { Sitemap } from './Sitemap'
 import { SitemapBlock } from './SitemapBlock'
-import { SitemapSection } from './SitemapSection'
 
 export class SitemapPage {
   sitemap: Sitemap
-  section: SitemapSection
   parent: SitemapPage
   name: string
   color: string
   link: string
   isRoot: Boolean = false
-  index: number = 0
   blocks: SitemapBlock[] = []
   children: SitemapPage[] = []
   ci: CanvasItem = null
 
-  constructor(sitemap: Sitemap, data, section: SitemapSection = null, parentPage: SitemapPage = null) {
+  constructor(sitemap: Sitemap, data, parent: SitemapPage = null) {
     this.sitemap = sitemap
-    this.section = section
-    this.parent = parentPage
+    this.parent = parent
 
     try {
       const { children, blocks, ...rest } = data
@@ -31,9 +29,8 @@ export class SitemapPage {
       }
 
       if (children) {
-        children.forEach((child, index) => {
-          child.index = child.index || index
-          this.children.push(new SitemapPage(this.sitemap, child, this.section, this))
+        children.forEach((child: SitemapPage, index) => {
+          this.children.push(new SitemapPage(this.sitemap, child, this))
         })
       }
       if (blocks) {
@@ -86,7 +83,7 @@ export class SitemapPage {
   }
 
   update() {
-    const parent = this.parent || this.section
+    const parent = this.parent
     const canvas = this.sitemap.canvas
     const { width, blockHeight, blockGap, fontSize, paddingY } = this.styles
     const ci = this.ci
@@ -96,11 +93,12 @@ export class SitemapPage {
       ci.top = 50
       ci.left = canvas.width / 2 - width / 2
     } else if (parent) {
-      const children = this.parent ? this.parent.children : this.section.pages
+      const children = this.parent.children
       const gap = width / 2
       const totalW = children.length * width + (children.length - 1) * gap
       const startLeft = parent.ci.cx - totalW / 2
-      ci.left = startLeft + this.index * (width + gap)
+      const index = parent.children.indexOf(this)
+      ci.left = startLeft + index * (width + gap)
       ci.top = parent.ci.bottom + gap
     }
 
@@ -122,5 +120,19 @@ export class SitemapPage {
       connection.draw()
     })
     if (this.blocks) this.blocks.forEach(b => b.draw())
+  }
+
+  addChild(childPageData = {}) {
+    const page = new SitemapPage(this.sitemap, defaultPage(childPageData), this)
+    const command = new AddPageCommand({ page })
+    command.execute()
+  }
+
+  addChildAt(index, data = {}) {
+    return this.addChild({ index, ...data })
+  }
+
+  addSibling() {
+    return this.parent.addChildAt(this.parent.children.indexOf(this) + 1)
   }
 }

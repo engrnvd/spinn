@@ -7,7 +7,7 @@ export class Sitemap {
   id: any
   name: string
   isTemplate: Boolean = false
-  pages: SitemapPage[] = []
+  tree: SitemapPage[] = []
   sections: SitemapSection[] = []
   createdAt: any
   updatedAt: any
@@ -18,9 +18,9 @@ export class Sitemap {
 
     try {
       for (const key in data) {
-        if (key === 'pages') {
-          data.pages.forEach((page, index) => {
-            this.pages.push(new SitemapPage(this, page))
+        if (key === 'tree') {
+          data.tree.forEach((page, index) => {
+            this.tree.push(new SitemapPage(this, page))
           })
         } else if (key === 'sections') {
           for (const section of data.sections) {
@@ -48,7 +48,7 @@ export class Sitemap {
     let minY = null
     let maxX = null
     let maxY = null
-    this.pages.forEach(page => {
+    this.tree.forEach(page => {
       page.update().draw()
       // update canvas points
       const item = page.ci

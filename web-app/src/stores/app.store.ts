@@ -1,13 +1,15 @@
 import { defineStore } from 'pinia'
+import { ApmCanvas } from '../classes/canvas/ApmCanvas'
+import { Sitemap } from '../classes/Sitemap'
 import { SitemapBlock } from '../classes/SitemapBlock'
 import { SitemapPage } from '../classes/SitemapPage'
 
 export const useAppStore = defineStore('app', {
   state: () => ({
-    sitemap: null,
+    sitemap: null as Sitemap | null,
   }),
   getters: {
-    canvas() {
+    canvas(): ApmCanvas | null {
       return this.sitemap?.canvas
     },
     hasHoveredPage() {
@@ -18,7 +20,7 @@ export const useAppStore = defineStore('app', {
     },
   },
   actions: {
-    setSitemap(sitemap) {
+    setSitemap(sitemap: Sitemap) {
       this.sitemap = sitemap
     }
   },

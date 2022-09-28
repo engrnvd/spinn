@@ -1,10 +1,10 @@
-export const newSitemapBlock = (data = {}) => ({
+export const defaultBlock = (data = {}) => ({
   name: 'Block name',
   color: '#45a8e1',
   ...data,
 })
 
-export const newSitemapPage = (data = {}) => ({
+export const defaultPage = (data = {}) => ({
   name: 'Page name',
   color: '#70cc8f',
   link: '',
@@ -15,23 +15,23 @@ export const newSitemapPage = (data = {}) => ({
 
 export const newSitemapTemplate = () => ({
   name: 'Untitled Sitemap',
-  pages: [
-    newSitemapPage({
+  tree: [
+    defaultPage({
       name: 'Home',
       isRoot: true,
       blocks: [
-        newSitemapBlock({ name: 'Header' }),
-        newSitemapBlock({ name: 'Hero Section' }),
-        newSitemapBlock({ name: 'Testimonials' }),
-        newSitemapBlock({ name: 'Features' }),
-        newSitemapBlock({ name: 'FAQs' }),
-        newSitemapBlock({ name: 'Footer' }),
+        defaultBlock({ name: 'Header' }),
+        defaultBlock({ name: 'Hero Section' }),
+        defaultBlock({ name: 'Testimonials' }),
+        defaultBlock({ name: 'Features' }),
+        defaultBlock({ name: 'FAQs' }),
+        defaultBlock({ name: 'Footer' }),
       ],
       children: [
-        newSitemapPage({ name: 'Page 1', color: '#45a8e1' }),
-        newSitemapPage({ name: 'Page 2' }),
-        newSitemapPage({ name: 'Page 3', color: '#45a8e1' }),
-        newSitemapPage({ name: 'Page 4' }),
+        defaultPage({ name: 'Page 1', color: '#45a8e1' }),
+        defaultPage({ name: 'Page 2' }),
+        defaultPage({ name: 'Page 3', color: '#45a8e1' }),
+        defaultPage({ name: 'Page 4' }),
       ],
     }),
   ]
