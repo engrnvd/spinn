@@ -10,14 +10,14 @@ const app = useAppStore()
 
 <template>
     <div class="zoom-tools all-center gap-2 px-2">
-        <a href="" @click.prevent="app.canvas.zoomIn()">
-            <PlusIcon/>
-        </a>
-        <a href="" @click.prevent="app.canvas.setZoom(1)">
-            {{ Math.round(app.canvas.zoom.scale * 100) }}%
-        </a>
         <a href="" @click.prevent="app.canvas.zoomOut()">
             <MinusIcon/>
+        </a>
+        <a href="" @click.prevent="app.canvas.setZoom(1)" style="min-width: 3rem; text-align: center">
+            {{ Math.round(app.canvas.zoom.scale * 100) }}%
+        </a>
+        <a href="" @click.prevent="app.canvas.zoomIn()">
+            <PlusIcon/>
         </a>
     </div>
 </template>

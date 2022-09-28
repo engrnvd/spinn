@@ -113,6 +113,11 @@ a {
     &:hover {
         filter: brightness(85%);
     }
+
+    &.disabled {
+        color: var(--muted);
+        cursor: not-allowed;
+    }
 }
 
 a:not([href]):not([class]) {
