@@ -1,4 +1,5 @@
 import { AddPageCommand } from '../commands/AddPageCommand'
+import { CollapsePageCommand } from '../commands/CollapsePageCommand'
 import { cssFontSize } from '../helpers/misc'
 import { defaultPage } from '../helpers/sitemap-helper'
 import { CanvasItem } from './canvas/CanvasItem'
@@ -13,6 +14,7 @@ export class SitemapPage {
   color: string
   link: string
   isRoot: Boolean = false
+  collapsed: Boolean = false
   blocks: SitemapBlock[] = []
   children: SitemapPage[] = []
   ci: CanvasItem = null
@@ -114,7 +116,7 @@ export class SitemapPage {
 
   draw() {
     this.ci.draw()
-    if (this.children) this.children.forEach(p => {
+    if (this.children && !this.collapsed) this.children.forEach(p => {
       p.draw()
       const connection = new Connection(this, p)
       connection.draw()
@@ -124,8 +126,11 @@ export class SitemapPage {
 
   addChild(childPageData = {}) {
     const page = new SitemapPage(this.sitemap, defaultPage(childPageData), this)
-    const command = new AddPageCommand({ page })
-    command.execute()
+    new AddPageCommand({ page }).execute()
+  }
+
+  toggleCollapse() {
+    new CollapsePageCommand({ page: this }).execute()
   }
 
   addChildAt(index, data = {}) {
