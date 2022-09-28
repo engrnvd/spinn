@@ -39,5 +39,6 @@ function onClick() {
 <style scoped lang="scss">
 .add-block-btn {
     min-width: 0;
+    background-color: var(--secondary-darker);
 }
 </style>
