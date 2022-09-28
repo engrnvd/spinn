@@ -1,6 +1,6 @@
 import { AddPageCommand } from '../commands/AddPageCommand'
 import { CollapsePageCommand } from '../commands/CollapsePageCommand'
-import { cssFontSize } from '../helpers/misc'
+import { cssFontSize, cssVar } from '../helpers/misc'
 import { defaultPage } from '../helpers/sitemap-helper'
 import { canvasHelper } from './canvas/canvas-helper'
 import { CanvasItem } from './canvas/CanvasItem'
@@ -126,8 +126,13 @@ export class SitemapPage {
 
     if (this.collapsed) {
       const ctx = this.ci.canvas.ctx
-      canvasHelper.circle(ctx, this.ci.cx, this.ci.bottom, cssFontSize() * 0.5)
+      const fontSize = cssFontSize() * 0.5
+      canvasHelper.circle(ctx, this.ci.left, this.ci.bottom, fontSize)
       ctx.fill()
+      ctx.textBaseline = 'middle'
+      ctx.fillStyle = cssVar('--light')
+      ctx.font = `${fontSize}px ${cssVar('--font')}`
+      ctx.fillText(this.children.length, this.ci.left - fontSize / 3, this.ci.bottom)
     }
 
     if (this.blocks) this.blocks.forEach(b => b.draw())
