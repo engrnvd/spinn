@@ -2,6 +2,7 @@ import { AddPageCommand } from '../commands/AddPageCommand'
 import { CollapsePageCommand } from '../commands/CollapsePageCommand'
 import { cssFontSize } from '../helpers/misc'
 import { defaultPage } from '../helpers/sitemap-helper'
+import { canvasHelper } from './canvas/canvas-helper'
 import { CanvasItem } from './canvas/CanvasItem'
 import { Connection } from './canvas/Connection'
 import { Sitemap } from './Sitemap'
@@ -58,6 +59,7 @@ export class SitemapPage {
         textBold: true,
         textColor: this.color,
         hoverable: true,
+        hoverOffset: fontSize,
         selectable: true,
         editable: true,
         meta: this,
@@ -121,6 +123,13 @@ export class SitemapPage {
       const connection = new Connection(this, p)
       connection.draw()
     })
+
+    if (this.collapsed) {
+      const ctx = this.ci.canvas.ctx
+      canvasHelper.circle(ctx, this.ci.cx, this.ci.bottom, cssFontSize() * 0.5)
+      ctx.fill()
+    }
+
     if (this.blocks) this.blocks.forEach(b => b.draw())
   }
 

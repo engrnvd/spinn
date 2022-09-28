@@ -25,6 +25,7 @@ export class CanvasItem {
   paddingY = 0
 
   hoverable = false
+  hoverOffset: number = 0
   editable = false
   selectable = false
   draggable = false
@@ -177,10 +178,10 @@ export class CanvasItem {
     let mouseX = mouse.x - this.canvas.origin.x
     let mouseY = mouse.y - this.canvas.origin.y
 
-    let itemL = this.left
-    let itemT = this.top
-    let itemB = this.bottom
-    let itemR = this.right
+    let itemL = this.left - this.hoverOffset
+    let itemT = this.top - this.hoverOffset
+    let itemB = this.bottom + this.hoverOffset
+    let itemR = this.right + this.hoverOffset
 
     const scale = this.canvas.zoom.scale
     if (scale !== 1) {
