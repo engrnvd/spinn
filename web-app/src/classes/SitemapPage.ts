@@ -124,18 +124,22 @@ export class SitemapPage {
       connection.draw()
     })
 
-    if (this.collapsed) {
-      const ctx = this.ci.canvas.ctx
-      const fontSize = cssFontSize() * 0.5
-      canvasHelper.circle(ctx, this.ci.left, this.ci.bottom, fontSize)
-      ctx.fill()
-      ctx.textBaseline = 'middle'
-      ctx.fillStyle = cssVar('--light')
-      ctx.font = `${fontSize}px ${cssVar('--font')}`
-      ctx.fillText(this.children.length, this.ci.left - fontSize / 3, this.ci.bottom)
-    }
+    if (this.collapsed) this.drawCollapsedState()
 
     if (this.blocks) this.blocks.forEach(b => b.draw())
+  }
+
+  drawCollapsedState() {
+    const ctx = this.ci.canvas.ctx
+    const fontSize = cssFontSize() * 0.5
+    canvasHelper.circle(ctx, this.ci.left, this.ci.bottom, fontSize)
+    ctx.fill()
+    ctx.textBaseline = 'top'
+    ctx.fillStyle = cssVar('--light')
+    ctx.font = `${fontSize}px ${cssVar('--font')}`
+    const text = String(this.children.length)
+    const textW = ctx.measureText(text).width
+    ctx.fillText(text, this.ci.left - textW / 2, this.ci.bottom - fontSize / 2)
   }
 
   addChild(childPageData = {}) {
