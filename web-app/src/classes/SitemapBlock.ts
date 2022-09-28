@@ -33,6 +33,7 @@ export class SitemapBlock {
         selectable: true,
         editable: true,
         hoverable: true,
+        hoverOffset: this.page.styles.blockGap,
         meta: this,
       })
     } catch (e) {
