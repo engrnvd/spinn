@@ -11,6 +11,7 @@ import AddBlockBtn from './AddBlockBtn.vue'
 import AddChildPageBtn from './AddChildPageBtn.vue'
 import AddSiblingPageBtn from './AddSiblingPageBtn.vue'
 import CollapsePageBtn from './CollapsePageBtn.vue'
+import EditedItemInput from './EditedItemInput.vue'
 import SelectedItemToolbar from './SelectedItemToolbar.vue'
 import SitemapFooter from './SitemapFooter.vue'
 
@@ -42,6 +43,7 @@ onMounted(() => {
     <div class="sitemap-editor flex-grow-1" ref="parentEl">
         <canvas ref="canvasEl"></canvas>
 
+        <EditedItemInput v-if="canvas.editedItem"/>
         <SelectedItemToolbar v-if="canvas.selectedItem"/>
         <AddBlockBtn v-if="canvas.hoveredItem && app.hasHoveredPage"/>
         <AddChildPageBtn v-if="canvas.hoveredItem && app.hasHoveredPage"/>

@@ -11,7 +11,7 @@ const commands = useCommandsStore()
 </script>
 
 <template>
-    <div class="all-center gap-2 px-2">
+    <div class="all-center gap-2 px-2" v-if="commands.canUndo || commands.canRedo">
         <a href="" @click.prevent="commands.undo()" :class="{'disabled':!commands.canUndo}">
             <ArrowULeftTopIcon/>
         </a>

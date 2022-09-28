@@ -23,7 +23,7 @@ const width = computed(() => item.value.relWidth)
             minWidth: `${width}px`
          }"
     >
-        {{ item.meta.name }}
+        Toolbar for {{ item.meta.name }}
     </div>
 </template>
 

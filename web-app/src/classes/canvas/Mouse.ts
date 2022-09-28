@@ -46,6 +46,7 @@ export class Mouse {
         if (canvas.hoveredItem.selectable) canvas.setSelectedItem(canvas.hoveredItem)
       } else {
         canvas.setSelectedItem(null)
+        canvas.setEditedItem(null)
       }
     })
 
