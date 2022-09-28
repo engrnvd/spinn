@@ -26,15 +26,21 @@ const draw = () => {
     update()
 }
 
-onMounted(() => {
+function updateCanvasSize() {
     const rect = parentEl.value.getBoundingClientRect()
     canvas.initialize(canvasEl.value)
     canvas.updateCanvasSize(rect.width, rect.height)
+}
+
+onMounted(() => {
+    updateCanvasSize()
 
     setTimeout(() => {
         app.setSitemap(new Sitemap(canvas, newSitemapTemplate()))
         draw()
-    }, 500)
+    }, 300)
+
+    window.addEventListener('resize', updateCanvasSize)
 })
 
 </script>
@@ -62,6 +68,7 @@ onMounted(() => {
     overflow: hidden;
     user-select: none;
     position: relative;
+    background-color: var(--bg);
 }
 
 </style>
