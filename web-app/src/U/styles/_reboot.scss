@@ -115,8 +115,11 @@ a {
     }
 
     &.disabled {
-        color: var(--muted);
-        cursor: not-allowed;
+        &, &:hover {
+            filter: none;
+            color: var(--muted);
+            cursor: not-allowed;
+        }
     }
 }
 
