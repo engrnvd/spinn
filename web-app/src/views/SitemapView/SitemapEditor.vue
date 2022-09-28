@@ -12,6 +12,7 @@ import AddChildPageBtn from './AddChildPageBtn.vue'
 import AddSiblingPageBtn from './AddSiblingPageBtn.vue'
 import CollapsePageBtn from './CollapsePageBtn.vue'
 import SelectedItemToolbar from './SelectedItemToolbar.vue'
+import SitemapFooter from './SitemapFooter.vue'
 
 const app = useAppStore()
 const parentEl = ref()
@@ -40,13 +41,16 @@ onMounted(() => {
 <template>
     <div class="sitemap-editor flex-grow-1" ref="parentEl">
         <canvas ref="canvasEl"></canvas>
-        <MainLoader v-if="!app.sitemap"/>
 
         <SelectedItemToolbar v-if="canvas.selectedItem"/>
         <AddBlockBtn v-if="canvas.hoveredItem && app.hasHoveredPage"/>
         <AddChildPageBtn v-if="canvas.hoveredItem && app.hasHoveredPage"/>
         <AddSiblingPageBtn v-if="canvas.hoveredItem && app.hasHoveredPage && !canvas.hoveredItem?.meta?.isRoot"/>
         <CollapsePageBtn v-if="canvas.hoveredItem && app.hasHoveredPage && canvas.hoveredItem?.meta?.children?.length"/>
+
+        <SitemapFooter v-if="app.canvas"/>
+
+        <MainLoader v-if="!app.sitemap"/>
     </div>
 </template>
 
