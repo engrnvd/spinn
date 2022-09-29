@@ -94,6 +94,7 @@ export class SitemapPage {
     const ci = this.ci
     ci.height = blockHeight * 2 + paddingY + blockGap
     ci.text = this.name
+    ci.borderColor = ci.textColor = this.color
 
     if (this.isRoot) {
       ci.top = 50

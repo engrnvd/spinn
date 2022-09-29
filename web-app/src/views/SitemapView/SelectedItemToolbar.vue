@@ -9,6 +9,7 @@ import ContentDuplicateIcon from '../../material-design-icons/ContentDuplicate.v
 import DeleteOutlineIcon from '../../material-design-icons/DeleteOutline.vue'
 import LinkVariantIcon from '../../material-design-icons/LinkVariant.vue'
 import { useAppStore } from '../../stores/app.store'
+import UColorPicker from '../../U/components/UColorPicker.vue'
 
 const app = useAppStore()
 const item = computed(() => app.canvas?.selectedItem)
@@ -59,9 +60,7 @@ function addBlock() {
         <a href="" @click.prevent="addBlock">
             <AddBlockIcon/>
         </a>
-        <a href="">
-            <CircleIcon/>
-        </a>
+        <UColorPicker show-toggle-btn v-model="item.meta.color"/>
         <a href="">
             <LinkVariantIcon/>
         </a>

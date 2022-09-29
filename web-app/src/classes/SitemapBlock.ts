@@ -1,4 +1,5 @@
 import { cssFontSize, cssVar } from '../helpers/misc'
+import { colorHelper } from '../U/helpers/color-helper'
 import { CanvasItem } from './canvas/CanvasItem'
 import { SitemapPage } from './SitemapPage'
 
@@ -45,6 +46,9 @@ export class SitemapBlock {
     const parent = this.page.ci
     const { blockGap, blockHeight } = this.page.styles
     this.ci.text = this.name
+    this.ci.fillColor = this.color
+    this.ci.textColor = colorHelper.isLight(this.color) ? cssVar('--dark') : cssVar('--light')
+
     this.ci.left = parent.left + parent.paddingX
     this.ci.height = blockHeight
     this.ci.width = parent.width - parent.paddingX * 2
