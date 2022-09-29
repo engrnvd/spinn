@@ -175,7 +175,7 @@ export class SitemapPage {
   }
 
   addChild(childPageData = {}) {
-    return this.addChildAt(this.children.length - 1, childPageData)
+    return this.addChildAt(this.children.length, childPageData)
   }
 
   addSibling() {
@@ -189,8 +189,7 @@ export class SitemapPage {
   }
 
   addBlock(blockData = {}) {
-    const index = this.blocks.length - 1
-    return this.addBlockAt(blockData, index)
+    return this.addBlockAt(this.blocks.length, blockData)
   }
 
   toggleCollapse() {
