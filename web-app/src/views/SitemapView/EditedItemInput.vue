@@ -12,13 +12,13 @@ const item = computed(() => app.canvas?.editedItem)
 const fontSize = computed(() => item.value.fontSize * app.canvas.zoom.scale)
 const styles = computed(() => ({
     left: item.value.relLeft + 'px',
-    top: item.value.relTop + 'px',
+    top: item.value.relTop + (item.value.meta._type === 'page' ? item.value.meta.styles.headerHeight * app.canvas.zoom.scale : 0) + 'px',
     width: item.value.relWidth + 'px',
     paddingInline: (item.value.paddingX * app.canvas.zoom.scale) + 'px',
     paddingBlock: (item.value.paddingY * app.canvas.zoom.scale) + 'px',
     fontSize: (item.value.fontSize * app.canvas.zoom.scale) + 'px',
     borderRadius: (item.value.borderRadius[0] * app.canvas.zoom.scale) + 'px',
-    height: (fontSize.value + item.value.paddingY * 2 * app.canvas.zoom.scale) + 'px',
+    height: (fontSize.value + (item.value.paddingY - (item.value.meta._type === 'page' ? item.value.meta.styles.headerHeight : 0)) * 2 * app.canvas.zoom.scale) + 'px',
 }))
 
 watchEffect(() => {
