@@ -10,7 +10,6 @@ export class SitemapBlock {
   color: string
   wireframe: any
   id: any
-  index: number
   ci: CanvasItem = null
 
   constructor(page, data) {
@@ -49,7 +48,7 @@ export class SitemapBlock {
     this.ci.left = parent.left + parent.paddingX
     this.ci.height = blockHeight
     this.ci.width = parent.width - parent.paddingX * 2
-    this.ci.top = parent.top + blockHeight + (blockHeight + blockGap) * this.index
+    this.ci.top = parent.top + blockHeight + (blockHeight + blockGap) * this.page.blocks.indexOf(this)
 
     return this
   }

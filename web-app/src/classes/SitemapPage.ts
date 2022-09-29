@@ -1,3 +1,4 @@
+import { AddBlockCommand } from '../commands/AddBlockCommand'
 import { AddPageCommand } from '../commands/AddPageCommand'
 import { CollapsePageCommand } from '../commands/CollapsePageCommand'
 import { cssFontSize, cssVar } from '../helpers/misc'
@@ -39,7 +40,6 @@ export class SitemapPage {
       }
       if (blocks) {
         blocks.forEach((block, index) => {
-          block.index = block.index || index
           this.blocks.push(new SitemapBlock(this, block))
         })
       }
@@ -147,6 +147,12 @@ export class SitemapPage {
   addChild(childPageData = {}) {
     const page = new SitemapPage(this.sitemap, defaultPage(childPageData), this)
     new AddPageCommand({ page }).execute()
+  }
+
+  addBlock(blockData) {
+    const block = new SitemapBlock(this, blockData)
+    new AddBlockCommand({ page: this, block }).execute()
+    return block
   }
 
   toggleCollapse() {

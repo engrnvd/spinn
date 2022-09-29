@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed, ref, watchEffect } from 'vue'
 import { EditItemNameCommand } from '../../commands/EditItemNameCommand'
-import { DebounceFn } from '../../helpers/misc'
+import { cssVar, DebounceFn } from '../../helpers/misc'
 import { useAppStore } from '../../stores/app.store'
 
 const changeFn = new DebounceFn(100)
@@ -63,6 +63,7 @@ function onChange(e) {
     position: absolute;
     border: none;
     outline: none;
+    box-shadow: var(--shadow-raised);
 }
 
 </style>

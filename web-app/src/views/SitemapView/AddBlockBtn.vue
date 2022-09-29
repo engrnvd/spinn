@@ -1,5 +1,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
+import { SitemapPage } from '../../classes/SitemapPage'
+import { defaultBlock } from '../../helpers/sitemap-helper'
 import PlusIcon from '../../material-design-icons/Plus.vue'
 import { useAppStore } from '../../stores/app.store'
 import UButton from '../../U/components/UButton.vue'
@@ -21,7 +23,9 @@ const style = computed(() => {
 })
 
 function onClick() {
-
+    const page: SitemapPage = item.value.meta
+    const block = page.addBlock(defaultBlock())
+    app.canvas.setEditedItem(block.ci)
 }
 
 </script>
@@ -31,6 +35,7 @@ function onClick() {
         secondary flat
         class="add-block-btn page-hover-btn"
         :style="style"
+        @click="onClick"
     >
         <PlusIcon/>
     </UButton>
