@@ -15,7 +15,7 @@ export class CanvasItem {
   fillColor: string
   borderWidth = 0
   borderColor: string
-  borderRadius = 0
+  borderRadius = [0, 0, 0, 0]
   // text
   textColor: string
   text: string
@@ -88,23 +88,29 @@ export class CanvasItem {
 
   drawRect() {
     if (!this.fillColor && !this.borderWidth) return
-    const br = this.borderRadius
-    const cpR = 0.4475 * br // ctrl pt ratio if r = 8 then cp = 3.58 = br * 0.4475
+    let br = this.borderRadius
+    let cpR = 0.4475 * br[0] // ctrl pt ratio if r = 8 then cp = 3.58 = br * 0.4475
     const ctx = this.canvas.ctx
 
     ctx.beginPath()
-    ctx.moveTo(this.left, this.top + br)
-    if (br) ctx.bezierCurveTo(this.left, this.top + cpR, this.left + cpR, this.top, this.left + br, this.top)
-    let nextX = this.right - br
+    ctx.moveTo(this.left, this.top + br[0])
+    if (br[0]) ctx.bezierCurveTo(this.left, this.top + cpR, this.left + cpR, this.top, this.left + br[0], this.top)
+    let nextX = this.right - br[0]
     ctx.lineTo(nextX, this.top)
-    if (br) ctx.bezierCurveTo(this.right - cpR, this.top, this.right, this.top + cpR, this.right, this.top + br)
-    let nextY = this.bottom - br
+
+    cpR = 0.4475 * br[1]
+    if (br[1]) ctx.bezierCurveTo(this.right - cpR, this.top, this.right, this.top + cpR, this.right, this.top + br[1])
+    let nextY = this.bottom - br[2]
     ctx.lineTo(this.right, nextY)
-    if (br) ctx.bezierCurveTo(this.right, this.bottom - cpR, this.right - cpR, this.bottom, this.right - br, this.bottom)
-    nextX = this.left + br
+
+    cpR = 0.4475 * br[2]
+    if (br[2]) ctx.bezierCurveTo(this.right, this.bottom - cpR, this.right - cpR, this.bottom, this.right - br[2], this.bottom)
+    nextX = this.left + br[3]
     ctx.lineTo(nextX, this.bottom)
-    if (br) ctx.bezierCurveTo(this.left + cpR, this.bottom, this.left, this.bottom - cpR, this.left, this.bottom - br)
-    nextY = this.top + br
+
+    cpR = 0.4475 * br[3]
+    if (br[3]) ctx.bezierCurveTo(this.left + cpR, this.bottom, this.left, this.bottom - cpR, this.left, this.bottom - br[3])
+    nextY = this.top + br[0]
     ctx.lineTo(this.left, nextY)
 
     if (this.fillColor) ctx.fillStyle = this.shadedColor(this.fillColor)

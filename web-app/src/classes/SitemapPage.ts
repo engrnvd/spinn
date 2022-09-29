@@ -53,7 +53,7 @@ export class SitemapPage {
         paddingX,
         paddingY,
         height: 0,
-        borderRadius,
+        borderRadius: [borderRadius, borderRadius, borderRadius, borderRadius],
         borderColor: this.color,
         borderWidth,
         text: this.name,

@@ -27,7 +27,7 @@ export class SitemapBlock {
         paddingX: fontSize * 0.5,
         paddingY: fontSize * 0.5,
         height: 0,
-        borderRadius: fontSize * 0.25,
+        borderRadius: [fontSize * 0.25, fontSize * 0.25, fontSize * 0.25, fontSize * 0.25],
         fillColor: this.color,
         text: this.name,
         textColor: cssVar('--light'),
@@ -52,7 +52,7 @@ export class SitemapBlock {
     this.ci.left = parent.left + parent.paddingX
     this.ci.height = blockHeight
     this.ci.width = parent.width - parent.paddingX * 2
-    this.ci.top = parent.top + blockHeight + (blockHeight + blockGap) * this.page.blocks.indexOf(this)
+    this.ci.top = parent.top + blockHeight + blockGap + (blockHeight + blockGap) * this.page.blocks.indexOf(this)
 
     if (this.ci.isSelectedItem) {
       this.ci.borderWidth = 2

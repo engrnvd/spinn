@@ -10,7 +10,7 @@ const props = defineProps({
     colors: {
         type: Array,
         default: () => [
-            '#000000', '#adb5bd', '#f44335', '#e91e63',
+            '#888888', '#adb5bd', '#f44335', '#e91e63',
             '#9c27b0', '#6739b7', '#3f51b5', '#2196f3',
             '#03a9f4', '#009688', '#4caf50', '#8bc34b',
             '#cddc38', '#ffeb3a', '#ffc108', '#ff9801',
@@ -99,8 +99,8 @@ onBeforeUnmount(() => {
 
 .color-picker {
     position: absolute;
-    top: calc(100% + 0.25em);
-    width: 16rem;
+    top: calc(100% + 0.5em);
+    width: 12.5rem;
     padding: 1em;
     background-color: var(--bg);
     border-radius: 0.5em;
@@ -122,8 +122,8 @@ onBeforeUnmount(() => {
     gap: 1em;
 
     .color-item {
-        width: 2rem;
-        height: 2rem;
+        width: 1.5rem;
+        height: 1.5rem;
         border-radius: 50%;
         cursor: pointer;
         transition: transform 0.15s ease-out;
