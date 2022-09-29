@@ -4,7 +4,7 @@ import { SitemapPage } from './SitemapPage'
 
 export class SitemapBlock {
   page: SitemapPage
-  _type: 'block'
+  _type = 'block'
   name: string
   body: string
   color: string

@@ -6,6 +6,7 @@ export class AddPageCommand extends Command {
 
   run() {
     const page: SitemapPage = this.payload.page
+    const index: number = this.payload.index
 
     let pages = page.parent?.children
     if (!pages) {
@@ -13,7 +14,7 @@ export class AddPageCommand extends Command {
       return
     }
 
-    pages.splice(pages.indexOf(page), 0, page)
+    pages.splice(index, 0, page)
 
     super.run()
   }

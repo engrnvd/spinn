@@ -1,5 +1,7 @@
 <script lang="ts" setup>
 import { computed, nextTick, ref, watch, watchEffect } from 'vue'
+import { SitemapBlock } from '../../classes/SitemapBlock'
+import { SitemapPage } from '../../classes/SitemapPage'
 import { cssFontSize } from '../../helpers/misc'
 import AddBlockIcon from '../../material-design-icons/AddBlock.vue'
 import CircleIcon from '../../material-design-icons/Circle.vue'
@@ -27,6 +29,20 @@ watchEffect(async () => {
     left.value = _left
 })
 
+function addBlock() {
+    let block: SitemapBlock
+    if (item.value.meta._type === 'page') {
+        let page: SitemapPage = item.value.meta
+        block = page.addBlock()
+    } else if (item.value.meta._type === 'block') {
+        let currentBlock: SitemapBlock = item.value.meta
+        let page: SitemapPage = currentBlock.page
+        block = page.addBlockAt(page.blocks.indexOf(currentBlock) + 1)
+    }
+
+    app.canvas.setSelectedItem(block.ci)
+    app.canvas.setEditedItem(block.ci)
+}
 </script>
 
 <template>
@@ -40,7 +56,7 @@ watchEffect(async () => {
             minWidth: `${width}px`
          }"
     >
-        <a href="">
+        <a href="" @click.prevent="addBlock">
             <AddBlockIcon/>
         </a>
         <a href="">

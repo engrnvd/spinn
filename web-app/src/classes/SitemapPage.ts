@@ -2,7 +2,7 @@ import { AddBlockCommand } from '../commands/AddBlockCommand'
 import { AddPageCommand } from '../commands/AddPageCommand'
 import { CollapsePageCommand } from '../commands/CollapsePageCommand'
 import { cssFontSize, cssVar } from '../helpers/misc'
-import { defaultPage } from '../helpers/sitemap-helper'
+import { defaultBlock, defaultPage } from '../helpers/sitemap-helper'
 import { canvasHelper } from './canvas/canvas-helper'
 import { CanvasItem } from './canvas/CanvasItem'
 import { Connection } from './canvas/Connection'
@@ -12,7 +12,7 @@ import { SitemapBlock } from './SitemapBlock'
 export class SitemapPage {
   sitemap: Sitemap
   parent: SitemapPage
-  _type: 'page'
+  _type = 'page'
   name: string
   color: string
   link: string
@@ -144,26 +144,33 @@ export class SitemapPage {
     ctx.fillText(text, this.ci.left - textW / 2, this.ci.bottom - fontSize / 2)
   }
 
-  addChild(childPageData = {}) {
-    const page = new SitemapPage(this.sitemap, defaultPage(childPageData), this)
-    new AddPageCommand({ page }).execute()
+  addChildAt(index, data = {}) {
+    const page = new SitemapPage(this.sitemap, defaultPage(data), this)
+    new AddPageCommand({ page, index }).execute()
+    return page
   }
 
-  addBlock(blockData) {
-    const block = new SitemapBlock(this, blockData)
-    new AddBlockCommand({ page: this, block }).execute()
+  addChild(childPageData = {}) {
+    return this.addChildAt(this.children.length - 1, childPageData)
+  }
+
+  addSibling() {
+    return this.parent.addChildAt(this.parent.children.indexOf(this) + 1)
+  }
+
+  addBlockAt(index, blockData = {}) {
+    const block = new SitemapBlock(this, defaultBlock(blockData))
+    new AddBlockCommand({ block, index }).execute()
     return block
+  }
+
+  addBlock(blockData = {}) {
+    const index = this.blocks.length - 1
+    return this.addBlockAt(blockData, index)
   }
 
   toggleCollapse() {
     new CollapsePageCommand({ page: this }).execute()
   }
 
-  addChildAt(index, data = {}) {
-    return this.addChild({ index, ...data })
-  }
-
-  addSibling() {
-    return this.parent.addChildAt(this.parent.children.indexOf(this) + 1)
-  }
 }

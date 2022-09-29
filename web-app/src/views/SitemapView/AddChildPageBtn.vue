@@ -15,7 +15,7 @@ const top = computed(() => item.value.relBottom)
 
 function onClick() {
     const parent: SitemapPage = item.value.meta
-    parent.addChildAt(parent.children.length)
+    parent.addChild()
 }
 
 </script>

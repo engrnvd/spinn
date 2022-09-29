@@ -6,17 +6,18 @@ export class AddBlockCommand extends Command {
   description = 'Add new block'
 
   run() {
-    const page: SitemapPage = this.payload.page
     const block: SitemapBlock = this.payload.block
+    const index: number = this.payload.index
+    const page: SitemapPage = block.page
 
-    page.blocks.push(block)
+    page.blocks.splice(index, 0, block)
 
     super.run()
   }
 
   undo() {
-    const page: SitemapPage = this.payload.page
     const block: SitemapBlock = this.payload.block
+    const page: SitemapPage = block.page
 
     page.blocks.splice(page.blocks.indexOf(block), 1)
 

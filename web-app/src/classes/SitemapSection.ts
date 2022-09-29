@@ -3,7 +3,7 @@ import { Sitemap } from './Sitemap'
 import { SitemapPage } from './SitemapPage'
 
 export class SitemapSection {
-  _type: 'section'
+  _type = 'section'
   sitemap: Sitemap
   name: string
   children: SitemapPage[] = []
