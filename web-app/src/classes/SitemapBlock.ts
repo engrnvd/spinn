@@ -42,6 +42,16 @@ export class SitemapBlock {
     }
   }
 
+  toData() {
+    return {
+      id: this.id,
+      name: this.name,
+      color: this.color,
+      body: this.body,
+      wireframe: this.wireframe,
+    }
+  }
+
   update() {
     const parent = this.page.ci
     const { blockGap, blockHeight, headerHeight } = this.page.styles
