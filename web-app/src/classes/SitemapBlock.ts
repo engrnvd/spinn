@@ -44,7 +44,7 @@ export class SitemapBlock {
 
   update() {
     const parent = this.page.ci
-    const { blockGap, blockHeight } = this.page.styles
+    const { blockGap, blockHeight, headerHeight } = this.page.styles
     this.ci.text = this.name
     this.ci.fillColor = this.color
     this.ci.textColor = colorHelper.isLight(this.color) ? cssVar('--dark') : cssVar('--light')
@@ -52,7 +52,7 @@ export class SitemapBlock {
     this.ci.left = parent.left + parent.paddingX
     this.ci.height = blockHeight
     this.ci.width = parent.width - parent.paddingX * 2
-    this.ci.top = parent.top + blockHeight + (blockHeight + blockGap) * this.page.blocks.indexOf(this)
+    this.ci.top = parent.top + headerHeight + blockHeight + (blockHeight + blockGap) * this.page.blocks.indexOf(this)
 
     if (this.ci.isSelectedItem) {
       this.ci.borderWidth = 2
