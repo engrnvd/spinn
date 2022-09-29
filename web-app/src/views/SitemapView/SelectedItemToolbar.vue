@@ -2,9 +2,9 @@
 import { computed, nextTick, ref, watch, watchEffect } from 'vue'
 import { SitemapBlock } from '../../classes/SitemapBlock'
 import { SitemapPage } from '../../classes/SitemapPage'
+import { EditItemPropCommand } from '../../commands/EditItemPropCommand'
 import { cssFontSize } from '../../helpers/misc'
 import AddBlockIcon from '../../material-design-icons/AddBlock.vue'
-import CircleIcon from '../../material-design-icons/Circle.vue'
 import ContentDuplicateIcon from '../../material-design-icons/ContentDuplicate.vue'
 import DeleteOutlineIcon from '../../material-design-icons/DeleteOutline.vue'
 import LinkVariantIcon from '../../material-design-icons/LinkVariant.vue'
@@ -12,13 +12,13 @@ import { useAppStore } from '../../stores/app.store'
 import UColorPicker from '../../U/components/UColorPicker.vue'
 
 const app = useAppStore()
-const item = computed(() => app.canvas?.selectedItem)
 const toolbarEl = ref()
+const left = ref(0)
 
 const height = cssFontSize() * 2.25
+const item = computed(() => app.canvas?.selectedItem)
 const top = computed(() => item.value.relTop - height - 5)
 const width = computed(() => item.value.relWidth)
-const left = ref(0)
 
 watchEffect(async () => {
     let _left = item.value.relLeft
@@ -44,6 +44,12 @@ function addBlock() {
     app.canvas.setSelectedItem(block.ci)
     app.canvas.setEditedItem(block.ci)
 }
+
+function changeColor(color) {
+    if (color === item.value.meta.color) return
+    new EditItemPropCommand({ item: item.value.meta, prop: 'color', value: color }).execute()
+}
+
 </script>
 
 <template>
@@ -60,7 +66,11 @@ function addBlock() {
         <a href="" @click.prevent="addBlock">
             <AddBlockIcon/>
         </a>
-        <UColorPicker show-toggle-btn v-model="item.meta.color"/>
+        <UColorPicker
+            show-toggle-btn
+            :model-value="item.meta.color"
+            @update:model-value="changeColor"
+        />
         <a href="">
             <LinkVariantIcon/>
         </a>

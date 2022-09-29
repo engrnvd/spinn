@@ -37,7 +37,7 @@ function onChange(e) {
         const newValue = e.target.value
         if (existingValue === newValue) return close()
 
-        new EditItemNameCommand({ item: item.value.meta, name: newValue }).execute()
+        new EditItemNameCommand({ item: item.value.meta, value: newValue }).execute()
 
         setTimeout(close)
     })
