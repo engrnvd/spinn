@@ -10,16 +10,23 @@ const inputEl = ref()
 
 const item = computed(() => app.canvas?.editedItem)
 const fontSize = computed(() => item.value.fontSize * app.canvas.zoom.scale)
-const styles = computed(() => ({
-    left: item.value.relLeft + 'px',
-    top: item.value.relTop + (item.value.meta._type === 'page' ? item.value.meta.styles.headerHeight * app.canvas.zoom.scale : 0) + 'px',
-    width: item.value.relWidth + 'px',
-    paddingInline: (item.value.paddingX * app.canvas.zoom.scale) + 'px',
-    paddingBlock: (item.value.paddingY * app.canvas.zoom.scale) + 'px',
-    fontSize: (item.value.fontSize * app.canvas.zoom.scale) + 'px',
-    borderRadius: (item.value.borderRadius[0] * app.canvas.zoom.scale) + 'px',
-    height: (fontSize.value + (item.value.paddingY - (item.value.meta._type === 'page' ? item.value.meta.styles.headerHeight : 0)) * 2 * app.canvas.zoom.scale) + 'px',
-}))
+const styles = computed(() => {
+    let height = fontSize.value
+    let paddingY = item.value.paddingY
+    if (item.value.meta._type === 'page') paddingY -= item.value.meta.styles.headerHeight
+    height += paddingY * 2 * app.canvas.zoom.scale
+    const zoom = app.canvas.zoom.scale
+
+    return {
+        left: item.value.relLeft + item.value.borderWidth * zoom + 'px',
+        top: item.value.relTop + (item.value.meta._type === 'page' ? item.value.meta.styles.headerHeight * zoom : 0) + 'px',
+        width: item.value.relWidth - item.value.borderWidth * 2 * zoom + 'px',
+        paddingInline: (item.value.paddingX * zoom) + 'px',
+        fontSize: fontSize.value + 'px',
+        borderRadius: (item.value.borderRadius[0] * zoom) + 'px',
+        height: height + 'px',
+    }
+})
 
 watchEffect(() => {
     if (!item.value || !inputEl.value) return
@@ -64,6 +71,7 @@ function onChange(e) {
     border: none;
     outline: none;
     box-shadow: var(--shadow-raised);
+    z-index: 2;
 }
 
 </style>

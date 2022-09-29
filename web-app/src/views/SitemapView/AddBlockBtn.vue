@@ -15,7 +15,7 @@ const style = computed(() => {
     const zoom = app.canvas.zoom.scale
     return {
         left: item.value.relLeft + (item.value.paddingX) * zoom + 'px',
-        top: item.value.relBottom - (height + item.value.paddingY + item.value.meta.styles.blockGap) * zoom + 'px',
+        top: item.value.relBottom - (height + item.value.paddingY - item.value.meta.styles.headerHeight + item.value.meta.styles.blockGap * 2) * zoom + 'px',
         width: item.value.relWidth - (item.value.paddingX * 2) * zoom + 'px',
         borderRadius: (item.value.borderRadius[0]) * zoom + 'px',
         height: height * zoom + 'px',
