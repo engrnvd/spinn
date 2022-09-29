@@ -2,6 +2,7 @@
 import { computed, nextTick, ref, watch, watchEffect } from 'vue'
 import { SitemapBlock } from '../../classes/SitemapBlock'
 import { SitemapPage } from '../../classes/SitemapPage'
+import { DeleteItemCommand } from '../../commands/DeleteItemCommand'
 import { EditItemPropCommand } from '../../commands/EditItemPropCommand'
 import { cssFontSize } from '../../helpers/misc'
 import AddBlockIcon from '../../material-design-icons/AddBlock.vue'
@@ -50,6 +51,13 @@ function changeColor(color) {
     new EditItemPropCommand({ item: item.value.meta, prop: 'color', value: color }).execute()
 }
 
+function deleteItem() {
+    new DeleteItemCommand({ item: item.value.meta }).execute()
+    app.canvas.setSelectedItem(null)
+    app.canvas.setEditedItem(null)
+    app.canvas.setHoveredItem(null)
+}
+
 </script>
 
 <template>
@@ -66,19 +74,24 @@ function changeColor(color) {
         <a href="" @click.prevent="addBlock">
             <AddBlockIcon/>
         </a>
+
         <UColorPicker
             show-toggle-btn
             :model-value="item.meta.color"
             @update:model-value="changeColor"
         />
+
         <a href="">
             <LinkVariantIcon/>
         </a>
+
         <a href="" v-if="!item.meta.isRoot">
             <ContentDuplicateIcon/>
         </a>
+
         <div class="separator" v-if="!item.meta.isRoot"></div>
-        <a href="" class="text-danger" v-if="!item.meta.isRoot">
+
+        <a href="" class="text-danger" v-if="!item.meta.isRoot" @click.prevent="deleteItem">
             <DeleteOutlineIcon/>
         </a>
     </div>
