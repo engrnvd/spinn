@@ -68,7 +68,6 @@ onMounted(() => {
     overflow: hidden;
     user-select: none;
     position: relative;
-    background-color: var(--bg);
 }
 
 </style>

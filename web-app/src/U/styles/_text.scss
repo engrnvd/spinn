@@ -81,7 +81,7 @@ $font-weight-bolder: bolder !default;
 
 @each $color, $value in $theme-colors {
     .text-#{$color} {
-        color: #{$value};
+        color: var(--#{$color});
     }
 }
 

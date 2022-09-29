@@ -35,11 +35,4 @@ import DarkModeToggleBtn from './DarkModeToggleBtn.vue'
 .home-link {
     border-bottom: none;
 }
-
-.separator {
-    width: 1px;
-    height: 1.5em;
-    margin: 0 0.5em;
-    background-color: var(--muted);
-}
 </style>
