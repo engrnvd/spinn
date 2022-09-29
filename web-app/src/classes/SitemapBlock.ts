@@ -52,7 +52,7 @@ export class SitemapBlock {
     this.ci.left = parent.left + parent.paddingX
     this.ci.height = blockHeight
     this.ci.width = parent.width - parent.paddingX * 2
-    this.ci.top = parent.top + blockHeight + blockGap + (blockHeight + blockGap) * this.page.blocks.indexOf(this)
+    this.ci.top = parent.top + blockHeight + (blockHeight + blockGap) * this.page.blocks.indexOf(this)
 
     if (this.ci.isSelectedItem) {
       this.ci.borderWidth = 2

@@ -17,7 +17,7 @@ const styles = computed(() => ({
     paddingInline: (item.value.paddingX * app.canvas.zoom.scale) + 'px',
     paddingBlock: (item.value.paddingY * app.canvas.zoom.scale) + 'px',
     fontSize: (item.value.fontSize * app.canvas.zoom.scale) + 'px',
-    borderRadius: (item.value.borderRadius * app.canvas.zoom.scale) + 'px',
+    borderRadius: (item.value.borderRadius[0] * app.canvas.zoom.scale) + 'px',
     height: (fontSize.value + item.value.paddingY * 2 * app.canvas.zoom.scale) + 'px',
 }))
 

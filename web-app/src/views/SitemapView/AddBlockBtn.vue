@@ -17,7 +17,7 @@ const style = computed(() => {
         left: item.value.relLeft + (item.value.paddingX) * zoom + 'px',
         top: item.value.relBottom - (height + item.value.paddingY + item.value.meta.styles.blockGap) * zoom + 'px',
         width: item.value.relWidth - (item.value.paddingX * 2) * zoom + 'px',
-        borderRadius: (item.value.borderRadius) * zoom + 'px',
+        borderRadius: (item.value.borderRadius[0]) * zoom + 'px',
         height: height * zoom + 'px',
     }
 })
