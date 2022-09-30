@@ -22,7 +22,7 @@ const alts = reactive(['solid', 'transparent', 'flat', 'outline', 'compact'])
                 <h2>{{ type }} {{ alt }}</h2>
                 <div class="d-flex gap-4">
                     <div v-for="color in variants">
-                        <UButton :[color]="true" :[alt]="true" :[type]="true">
+                        <UButton :[color]="true" :[alt]="true" :[type]="true" v-tooltip="color">
                             <AccountIcon v-if="type === 'icon'"/>
                             <span v-else>{{ color }}</span>
                         </UButton>

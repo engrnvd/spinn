@@ -1,7 +1,8 @@
 function createRipple(event: any) {
   const button = event.currentTarget
   const rect = button.getBoundingClientRect()
-  button.style.position = 'relative'
+  const position = getComputedStyle(button).position
+  position === 'absolute' || (button.style.position = 'relative')
   button.style.overflow = 'hidden'
 
   const circle = document.createElement('span')
@@ -13,7 +14,7 @@ function createRipple(event: any) {
   circle.style.top = `${event.clientY - rect.y - radius}px`
   circle.classList.add('ripple')
 
-  const ripple = button.getElementsByClassName('ripple')[0]
+  const ripple = button.querySelector('.ripple')
 
   if (ripple) {
     ripple.remove()
