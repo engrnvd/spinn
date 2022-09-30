@@ -3,6 +3,7 @@ import { AddPageCommand } from '../commands/AddPageCommand'
 import { CollapsePageCommand } from '../commands/CollapsePageCommand'
 import { cssFontSize, cssVar } from '../helpers/misc'
 import { defaultBlock, defaultPage } from '../helpers/sitemap-helper'
+import { colorHelper } from '../U/helpers/color-helper'
 import { canvasHelper } from './canvas/canvas-helper'
 import { CanvasItem } from './canvas/CanvasItem'
 import { Connection } from './canvas/Connection'
@@ -123,6 +124,12 @@ export class SitemapPage {
     }
   }
 
+  get shadedColor() {
+    let color = this.color
+    if (colorHelper.isLight(color)) color = colorHelper.darken(color, 30)
+    return color
+  }
+
   update() {
     const parent = this.parent
     const canvas = this.sitemap.canvas
@@ -130,7 +137,8 @@ export class SitemapPage {
     const ci = this.ci
     ci.height = headerHeight + blockHeight * 2 + paddingY + blockGap
     ci.text = this.name
-    ci.borderColor = ci.textColor = this.color
+
+    this.header.fillColor = ci.borderColor = ci.textColor = this.shadedColor
 
     if (this.isRoot) {
       this.header.top = ci.top = 50

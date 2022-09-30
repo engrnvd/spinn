@@ -16,7 +16,7 @@ export class Connection {
     const ctx = this.fromPage.sitemap.canvas.ctx
 
     ctx.beginPath()
-    ctx.strokeStyle = this.fromPage.color
+    ctx.strokeStyle = this.fromPage.shadedColor
     ctx.moveTo(startX, startY)
     const xDiff = endX - startX
     if (xDiff === 0) {
