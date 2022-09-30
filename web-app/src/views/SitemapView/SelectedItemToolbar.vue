@@ -3,6 +3,7 @@ import { computed, nextTick, ref, watch, watchEffect } from 'vue'
 import { SitemapBlock } from '../../classes/SitemapBlock'
 import { SitemapPage } from '../../classes/SitemapPage'
 import { DeleteItemCommand } from '../../commands/DeleteItemCommand'
+import { DuplicateItemCommand } from '../../commands/DuplicateItemCommand'
 import { EditItemPropCommand } from '../../commands/EditItemPropCommand'
 import { cssFontSize } from '../../helpers/misc'
 import AddBlockIcon from '../../material-design-icons/AddBlock.vue'
@@ -58,6 +59,12 @@ function deleteItem() {
     app.canvas.setHoveredItem(null)
 }
 
+function duplicateItem() {
+    const command = new DuplicateItemCommand({ item: item.value.meta })
+    command.execute()
+    app.canvas.setSelectedItem(command.clonedItem.ci)
+}
+
 </script>
 
 <template>
@@ -85,7 +92,7 @@ function deleteItem() {
             <LinkVariantIcon/>
         </a>
 
-        <a href="" v-if="!item.meta.isRoot">
+        <a href="" v-if="!item.meta.isRoot" @click.prevent="duplicateItem">
             <ContentDuplicateIcon/>
         </a>
 

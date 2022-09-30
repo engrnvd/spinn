@@ -25,4 +25,11 @@ export class SitemapSection {
       console.error('Malformed section data.', e, data)
     }
   }
+
+  toData() {
+    return {
+      name: this.name,
+      children: this.children.map(ch => ch.toData()),
+    }
+  }
 }
