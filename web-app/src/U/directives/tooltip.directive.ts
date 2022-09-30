@@ -1,5 +1,5 @@
 const EdgeOffset = 0
-const TooltipOffset = 3
+const TooltipOffset = 5
 
 function updateTooltip(e) {
   const el = e.currentTarget
@@ -7,17 +7,16 @@ function updateTooltip(e) {
   let eRect = el.getBoundingClientRect()
   let tRect = tooltip.getBoundingClientRect()
   let vWidth = window.innerWidth
-  let vHeight = window.innerHeight
   let left = eRect.width / 2 - tRect.width / 2
-  let top = eRect.height + TooltipOffset
+  let top = 0 - (tRect.height + TooltipOffset)
 
   if (eRect.left + tRect.width / 2 < EdgeOffset) { // too close to the left edge
     left = eRect.width + TooltipOffset
     top = (eRect.height - tRect.height) / 2
   }
 
-  if ((eRect.bottom + tRect.height + EdgeOffset) >= vHeight) { // too close to bottom edge
-    top = 0 - tRect.height - TooltipOffset
+  if (eRect.top - tRect.height < EdgeOffset) { // too close to top edge
+    top = eRect.height + TooltipOffset
   }
 
   if ((eRect.left + tRect.width / 2 + EdgeOffset) >= vWidth) { // too close to right edge

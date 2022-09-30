@@ -78,27 +78,28 @@ function duplicateItem() {
             minWidth: `${width}px`
          }"
     >
-        <a href="" @click.prevent="addBlock">
+        <a href="" @click.prevent="addBlock" v-tooltip="'Add Block'">
             <AddBlockIcon/>
         </a>
 
         <UColorPicker
+            v-tooltip="'Color'"
             show-toggle-btn
             :model-value="item.meta.color"
             @update:model-value="changeColor"
         />
 
-        <a href="">
+        <a href="" v-tooltip="'Link'">
             <LinkVariantIcon/>
         </a>
 
-        <a href="" v-if="!item.meta.isRoot" @click.prevent="duplicateItem">
+        <a href="" v-if="!item.meta.isRoot" @click.prevent="duplicateItem" v-tooltip="'Duplicate'">
             <ContentDuplicateIcon/>
         </a>
 
         <div class="separator" v-if="!item.meta.isRoot"></div>
 
-        <a href="" class="text-danger" v-if="!item.meta.isRoot" @click.prevent="deleteItem">
+        <a href="" class="text-danger" v-tooltip="'Delete'" v-if="!item.meta.isRoot" @click.prevent="deleteItem">
             <DeleteOutlineIcon/>
         </a>
     </div>
