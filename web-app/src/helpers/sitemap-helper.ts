@@ -1,12 +1,12 @@
 export const defaultBlock = (data = {}) => ({
   name: 'Block name',
-  color: '#2196f3',
+  color: '#03a9f4',
   ...data,
 })
 
 export const defaultPage = (data = {}) => ({
   name: 'Page name',
-  color: '#4caf50',
+  color: '#00b3a1',
   link: '',
   isRoot: false,
   blocks: [],
@@ -28,9 +28,9 @@ export const newSitemapTemplate = () => ({
         defaultBlock({ name: 'Footer' }),
       ],
       children: [
-        defaultPage({ name: 'Page 1', color: '#2196f3' }),
+        defaultPage({ name: 'Page 1', color: '#03a9f4' }),
         defaultPage({ name: 'Page 2' }),
-        defaultPage({ name: 'Page 3', color: '#2196f3' }),
+        defaultPage({ name: 'Page 3', color: '#03a9f4' }),
         defaultPage({ name: 'Page 4' }),
       ],
     }),
