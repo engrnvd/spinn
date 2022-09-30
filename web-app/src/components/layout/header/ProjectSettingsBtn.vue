@@ -5,7 +5,7 @@ import UButton from '../../../U/components/UButton.vue'
 </script>
 
 <template>
-    <UButton icon transparent>
+    <UButton icon transparent v-tooltip="'Settings'">
         <CogOutlineIcon/>
     </UButton>
 </template>

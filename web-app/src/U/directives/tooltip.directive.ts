@@ -1,4 +1,4 @@
-const EdgeOffset = 80
+const EdgeOffset = 0
 const TooltipOffset = 3
 
 function updateTooltip(e) {
@@ -39,6 +39,9 @@ export const vTooltip = {
     el.classList.add('u-tooltip-parent')
 
     el.addEventListener('mouseenter', updateTooltip)
+  },
+  updated: (el, { value }) => {
+    el.querySelector('.u-tooltip').innerText = value
   },
   unmounted: (el) => {
     el.removeEventListener('mouseenter', updateTooltip)

@@ -1,7 +1,7 @@
 function createRipple(event: any) {
   const button = event.currentTarget
   const rect = button.getBoundingClientRect()
-  const position = getComputedStyle(button).position
+  const { position, overflow } = getComputedStyle(button)
   position === 'absolute' || (button.style.position = 'relative')
   button.style.overflow = 'hidden'
 
@@ -21,6 +21,10 @@ function createRipple(event: any) {
   }
 
   button.appendChild(circle)
+
+  // fix: reset the overflow AFTER the ripple is done animating
+  const { animationDuration } = getComputedStyle(circle)
+  setTimeout(() => button.style.overflow = overflow, parseFloat(animationDuration) * 1000)
 }
 
 export const vRipple = {
